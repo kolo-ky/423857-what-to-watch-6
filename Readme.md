@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
-* Студент: [Александр Колосовский](https://up.htmlacademy.ru/react/6/user/423857).
-* Наставник: `Неизвестно`.
+- Студент: [Александр Колосовский](https://up.htmlacademy.ru/react/6/user/423857).
+- Наставник: `Белик Павел`.
 
 ---
 
