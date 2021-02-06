@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 // components
 import Main from './pages/Main';
@@ -19,11 +19,11 @@ const App = (props) => {
             <Main {...props}/>
           )}
         />
-        <Route path="/login" exact component={Login} />
-        <Route path="/mylist" exact component={MyList} />
-        <Route path="/films/:id" exact component={Film} />
-        <Route path="/films/:id/review" exact component={AddReview} />
-        <Route path="/player/:id" exact component={Player} />
+        <Route path='/login' exact component={Login} />
+        <Route path='/mylist' exact component={MyList} />
+        <Route path='/films/:id' exact component={Film} />
+        <Route path='/films/:id/review' exact component={AddReview} />
+        <Route path='/player/:id' exact component={Player} />
         <Route component={NotFound}/>
       </Switch>
     </BrowserRouter>
