@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 // components
-import MovieCard from '../MovieCard';
+import MovieCard from '../../movie-card/movie-card';
 
 const Main = (props) => {
   const {headerMovie} = props;

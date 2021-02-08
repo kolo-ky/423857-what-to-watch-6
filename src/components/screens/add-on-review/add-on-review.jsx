@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddReview = () => (
+const AddOnReview = () => (
   <section className="movie-card movie-card--full">
     <div className="movie-card__header">
       <div className="movie-card__bg">
@@ -92,4 +92,4 @@ const AddReview = () => (
   </section>
 );
 
-export default AddReview;
+export default AddOnReview;

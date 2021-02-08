@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // components
-import App from './components/App';
+import App from './components/app/app';
 
 const headerMovie = {
   title: `The Grand Budapest Hotel`,

@@ -2,13 +2,13 @@ import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 // components
-import Main from './pages/Main';
-import Login from './pages/Login';
-import Film from './pages/Film';
-import AddReview from './pages/AddReview';
-import MyList from './pages/MyList';
-import Player from './pages/Player';
-import NotFound from './pages/NotFound';
+import Main from '../screens/main/main';
+import Login from '../screens/login/login';
+import Film from '../screens/film/film';
+import AddOnReview from '../screens/add-on-review/add-on-review';
+import MyList from '../screens/my-list/my-list';
+import Player from '../screens/player/Player';
+import NotFound from '../screens/not-found/not-found';
 
 const App = (props) => {
   return (
@@ -22,7 +22,7 @@ const App = (props) => {
         <Route path='/login' exact component={Login} />
         <Route path='/mylist' exact component={MyList} />
         <Route path='/films/:id' exact component={Film} />
-        <Route path='/films/:id/review' exact component={AddReview} />
+        <Route path='/films/:id/review' exact component={AddOnReview} />
         <Route path='/player/:id' exact component={Player} />
         <Route component={NotFound}/>
       </Switch>
