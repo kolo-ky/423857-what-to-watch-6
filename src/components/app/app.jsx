@@ -24,8 +24,8 @@ const App = (props) => {
       <ScrollToTop />
       <Switch>
         <Route path="/" exact
-          render={(mainProps) => (
-            <Main films={films} posterFilm={posterFilm} {...mainProps}/>
+          render={() => (
+            <Main films={films} posterFilm={posterFilm}/>
           )}
         />
         <Route path='/login' exact component={Login} />
@@ -35,18 +35,18 @@ const App = (props) => {
           )}
         />
         <Route path='/films/:id' exact
-          render={(filmsProps) => (
-            <Film films={films} {...filmsProps} />
+          render={() => (
+            <Film films={films}/>
           )}
         />
         <Route path='/films/:id/review' exact
-          render={(reviewProps) => (
-            <AddOnReview films={films} {...reviewProps}/>
+          render={() => (
+            <AddOnReview films={films}/>
           )}
         />
         <Route path='/player/:id' exact
-          render={(playerProps) => (
-            <Player films={films} {...playerProps}/>
+          render={() => (
+            <Player films={films}/>
           )}
         />
         <Route component={NotFound}/>

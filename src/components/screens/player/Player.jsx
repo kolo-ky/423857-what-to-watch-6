@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 // types
 import filmType from "../../../types/film-types";
-import matchId from "../../../types/match-id";
 
-const Player = ({films, match}) => {
-  const film = films.find((item) => item.id === Number(match.params.id));
+const Player = ({films}) => {
+  const {id} = useParams();
+  const film = films.find((item) => item.id === Number(id));
 
   return (
     <div className="player">
@@ -51,7 +51,6 @@ Player.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmType)
   ),
-  match: PropTypes.shape(matchId),
 };
 
 export default Player;
