@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
+// types
+import filmType from '../../types/film-types';
+
 // components
 import AppHeader from '../app-header/app-header';
 
@@ -50,14 +53,7 @@ const MovieCard = ({film, history}) => {
 };
 
 MovieCard.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    img: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    video: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
-  }),
+  film: PropTypes.shape(filmType),
   history: PropTypes.object
 };
 

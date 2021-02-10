@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from "prop-types";
 
 // types
-import filmsTypes from "../../../types/films-types";
+import filmType from "../../../types/film-types";
 import matchId from '../../../types/match-id';
 
 // helpers
@@ -38,7 +38,7 @@ const Film = (props) => {
 
 Film.propTypes = {
   films: PropTypes.arrayOf(
-      PropTypes.shape(filmsTypes)
+      PropTypes.shape(filmType)
   ),
   match: PropTypes.shape(matchId),
   history: PropTypes.object

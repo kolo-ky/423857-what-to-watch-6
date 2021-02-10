@@ -1,9 +1,11 @@
 import React, {Fragment, useState} from "react";
 import PropTypes from "prop-types";
 
+// const
+const STARS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
 // eslint-disable-next-line no-unused-vars
 const AddReviewForm = ({id}) => {
-  const STARS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const [reviewForm, setReviewForm] = useState({
     rating: 0,
@@ -39,13 +41,14 @@ const AddReviewForm = ({id}) => {
         <div className="rating">
           <div className="rating__stars">
             {
-              STARS.map((star, index) => (
-                <Fragment key={`star-fragment-${index}`}>
+              STARS.map((star) => (
+                <Fragment key={`$star-fragment-${star}`}>
                   <input
-                    key={`$star-${star}`}
+                    key={`$input-${star}`}
                     className="rating__input"
                     id={`star-${star}`}
-                    type="radio" name="rating"
+                    type="radio"
+                    name="rating"
                     checked={reviewForm.rating >= star}
                     onChange={(evt) => evt.preventDefault()}
                   />

@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // types
-import filmsTypes from '../../types/films-types';
+import filmType from '../../types/film-types';
 
 // components
 import Main from '../screens/main/main';
@@ -13,14 +13,15 @@ import AddOnReview from '../screens/add-on-review/add-on-review';
 import MyList from '../screens/my-list/my-list';
 import Player from '../screens/player/Player';
 import NotFound from '../screens/not-found/not-found';
+import ScrollToTop from "../scroll-to-top/scroll-to-top";
 
 const App = (props) => {
   const {films, myFilmList} = props;
   const [posterFilm] = films;
 
-
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Switch>
         <Route path="/" exact
           render={(mainProps) => (
@@ -56,10 +57,10 @@ const App = (props) => {
 
 App.propTypes = {
   films: PropTypes.arrayOf(
-      PropTypes.shape(filmsTypes)
+      PropTypes.shape(filmType)
   ),
   myFilmList: PropTypes.arrayOf(
-      PropTypes.shape(filmsTypes)
+      PropTypes.shape(filmType)
   ),
 };
 

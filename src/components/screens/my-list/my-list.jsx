@@ -6,7 +6,7 @@ import MovieCardList from '../../movie-card-list/movie-card-list';
 import Footer from '../../footer/footer';
 
 // types
-import filmsTypes from '../../../types/films-types';
+import filmType from '../../../types/film-types';
 
 const MyList = (props) => {
   const {films} = props;
@@ -44,7 +44,7 @@ const MyList = (props) => {
 
 MyList.propTypes = {
   films: PropTypes.arrayOf(
-      PropTypes.shape(filmsTypes)
+      PropTypes.shape(filmType)
   ),
 };
 

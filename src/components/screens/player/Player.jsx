@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 // types
-import filmsTypes from "../../../types/films-types";
+import filmType from "../../../types/film-types";
 import matchId from "../../../types/match-id";
 
 const Player = ({films, match}) => {
@@ -12,7 +13,9 @@ const Player = ({films, match}) => {
     <div className="player">
       <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
 
-      <button type="button" className="player__exit">Exit</button>
+      <Link to={`/films/${film.id}`}>
+        <button type="button" className="player__exit">Exit</button>
+      </Link>
 
       <div className="player__controls">
         <div className="player__controls-row">
@@ -46,7 +49,7 @@ const Player = ({films, match}) => {
 
 Player.propTypes = {
   films: PropTypes.arrayOf(
-      PropTypes.shape(filmsTypes)
+      PropTypes.shape(filmType)
   ),
   match: PropTypes.shape(matchId),
 };

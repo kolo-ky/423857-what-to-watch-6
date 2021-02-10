@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import MovieCardListItem from "../movie-card-list-item/movie-card-list-item";
 
 // types
-import filmsTypes from '../../types/films-types';
+import filmType from '../../types/film-types';
 
 const MovieCardList = ({films}) => {
   // eslint-disable-next-line no-unused-vars
@@ -36,7 +36,7 @@ const MovieCardList = ({films}) => {
 
 MovieCardList.propTypes = {
   films: PropTypes.arrayOf(
-      PropTypes.shape(filmsTypes)
+      PropTypes.shape(filmType)
   ),
 };
 

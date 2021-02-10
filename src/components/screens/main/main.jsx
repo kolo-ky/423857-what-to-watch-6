@@ -7,7 +7,7 @@ import MovieCard from '../../movie-card/movie-card';
 import Footer from '../../footer/footer';
 
 // types
-import filmsTypes from '../../../types/films-types';
+import filmType from '../../../types/film-types';
 
 const Main = (props) => {
   const {films, posterFilm, history} = props;
@@ -68,9 +68,9 @@ const Main = (props) => {
 
 Main.propTypes = {
   films: PropTypes.arrayOf(
-      PropTypes.shape(filmsTypes)
+      PropTypes.shape(filmType)
   ),
-  posterFilm: PropTypes.shape(filmsTypes),
+  posterFilm: PropTypes.shape(filmType),
   history: PropTypes.object
 };
 

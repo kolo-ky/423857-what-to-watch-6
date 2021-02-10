@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 // types
-import filmsTypes from "../../../types/films-types";
+import filmType from "../../../types/film-types";
 import matchId from "../../../types/match-id";
 
 // components
 import AddReviewForm from '../../forms/add-review-form/add-review-form';
-import {Link} from "react-router-dom";
 
 const AddOnReview = ({films, match}) => {
   const film = films.find((item) => item.id === Number(match.params.id));
@@ -62,7 +62,7 @@ const AddOnReview = ({films, match}) => {
 
 AddOnReview.propTypes = {
   films: PropTypes.arrayOf(
-      PropTypes.shape(filmsTypes)
+      PropTypes.shape(filmType)
   ),
   match: PropTypes.shape(matchId)
 };

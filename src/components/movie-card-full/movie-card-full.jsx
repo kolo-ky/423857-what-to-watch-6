@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
+
+// types
+import filmType from '../../types/film-types';
 
 // components
 import AppHeader from "../app-header/app-header";
-import {Link} from "react-router-dom";
 
 const MovieCardFull = ({film, history}) => {
 
@@ -96,14 +99,7 @@ const MovieCardFull = ({film, history}) => {
 };
 
 MovieCardFull.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    img: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    video: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
-  }),
+  film: PropTypes.shape(filmType),
   history: PropTypes.object
 };
 
