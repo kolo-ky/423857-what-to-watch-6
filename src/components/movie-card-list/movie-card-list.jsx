@@ -13,7 +13,7 @@ const MovieCardList = ({films}) => {
     movieId: 0
   });
 
-  const handlerEnter = (movieId) => {
+  const handleEvent = (movieId) => {
     setActiveMovie({
       movieId
     });
@@ -27,7 +27,8 @@ const MovieCardList = ({films}) => {
           id={item.id}
           title={item.title}
           img={item.img}
-          onEnter={handlerEnter}
+          video={item.video}
+          onMouseEvent={handleEvent}
         />
       ))}
     </div>
