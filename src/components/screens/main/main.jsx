@@ -10,11 +10,11 @@ import Footer from '../../footer/footer';
 import filmType from '../../../types/film-types';
 
 const Main = (props) => {
-  const {films, posterFilm, history} = props;
+  const {films, posterFilm} = props;
 
   return (
     <Fragment>
-      <MovieCard film={posterFilm} history={history}/>
+      <MovieCard film={posterFilm}/>
 
       <div className="page-content">
         <section className="catalog">
@@ -70,8 +70,7 @@ Main.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmType)
   ),
-  posterFilm: PropTypes.shape(filmType),
-  history: PropTypes.object
+  posterFilm: PropTypes.shape(filmType)
 };
 
 export default Main;

@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 // types
 import filmType from "../../../types/film-types";
-import matchId from "../../../types/match-id";
 
 // components
 import AddReviewForm from '../../forms/add-review-form/add-review-form';
 
-const AddOnReview = ({films, match}) => {
-  const film = films.find((item) => item.id === Number(match.params.id));
+const AddOnReview = ({films}) => {
+  const {id} = useParams();
+  const film = films.find((item) => item.id === Number(id));
 
   return (
     <section className="movie-card movie-card--full">
@@ -64,7 +64,6 @@ AddOnReview.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmType)
   ),
-  match: PropTypes.shape(matchId)
 };
 
 export default AddOnReview;

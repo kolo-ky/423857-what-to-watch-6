@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
 import PropTypes from "prop-types";
+import {useParams} from 'react-router-dom';
 
 // types
 import filmType from "../../../types/film-types";
-import matchId from '../../../types/match-id';
 
 // helpers
 import getMoreFilms from '../../../helpers/get-more-films';
@@ -14,14 +14,16 @@ import MovieCardList from '../../movie-card-list/movie-card-list';
 import MovieCardFull from "../../movie-card-full/movie-card-full";
 
 const Film = (props) => {
-  const {films, match, history} = props;
-  const film = films.find((item) => item.id === Number(match.params.id));
+  const {films} = props;
+  const {id} = useParams();
+
+  const film = films.find((item) => item.id === Number(id));
 
   const moreFilmsList = getMoreFilms(films);
 
   return (
     <Fragment>
-      <MovieCardFull film={film} history={history}/>
+      <MovieCardFull film={film}/>
 
       <div className="page-content">
         <section className="catalog catalog--like-this">
@@ -39,9 +41,7 @@ const Film = (props) => {
 Film.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmType)
-  ),
-  match: PropTypes.shape(matchId),
-  history: PropTypes.object
+  )
 };
 
 export default Film;

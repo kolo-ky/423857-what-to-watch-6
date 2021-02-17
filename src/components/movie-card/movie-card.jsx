@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import {useHistory} from 'react-router-dom';
 
 // types
 import filmType from '../../types/film-types';
@@ -7,7 +8,9 @@ import filmType from '../../types/film-types';
 // components
 import AppHeader from '../app-header/app-header';
 
-const MovieCard = ({film, history}) => {
+const MovieCard = ({film}) => {
+  const history = useHistory();
+
   return (
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -53,8 +56,7 @@ const MovieCard = ({film, history}) => {
 };
 
 MovieCard.propTypes = {
-  film: PropTypes.shape(filmType),
-  history: PropTypes.object
+  film: PropTypes.shape(filmType)
 };
 
 export default MovieCard;
