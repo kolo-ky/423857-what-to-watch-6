@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 // types
 import tabsType from "../../../types/tabs-types";
 
-const getComponent = (tabs) => {
-  return tabs.items[tabs.active].component;
+const getComponent = (tabs, activeTab) => {
+  return tabs[activeTab].component;
 };
 
 const getProps = (props) => {
-  const propKey = props.tabs.items[props.tabs.active].propKey;
+  const propKey = props.tabs[props.activeTab].propKey;
   return {[propKey]: props[propKey]};
 };
 
 const TabsContentProxy = (props) => {
   const {tabs} = props;
-  const Component = getComponent(tabs);
+  const Component = getComponent(tabs, props.activeTab);
   const tabProps = getProps(props);
 
   return (
@@ -24,7 +24,8 @@ const TabsContentProxy = (props) => {
 };
 
 TabsContentProxy.propTypes = {
-  tabs: PropTypes.shape(tabsType)
+  tabs: PropTypes.shape(tabsType),
+  activeTab: PropTypes.string.isRequired
 };
 
 export default TabsContentProxy;

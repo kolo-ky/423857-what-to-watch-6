@@ -16,41 +16,35 @@ import reviews from '../../mocks/reviews';
 // types
 import filmType from '../../types/film-types';
 
-const Tabs = ({film}) => {
-  const [tabs, updateTabs] = useState({
-    items: {
-      overview: {
-        title: `Overview`,
-        propKey: `film`,
-        component: OverView,
-      },
-      details: {
-        title: `Details`,
-        propKey: `film`,
-        component: Details,
-      },
-      reviews: {
-        title: `Reviews`,
-        propKey: `reviews`,
-        component: Reviews,
-      }
-    },
-    active: `overview`
-  });
+const tabsItems = {
+  overview: {
+    title: `Overview`,
+    propKey: `film`,
+    component: OverView,
+  },
+  details: {
+    title: `Details`,
+    propKey: `film`,
+    component: Details,
+  },
+  reviews: {
+    title: `Reviews`,
+    propKey: `reviews`,
+    component: Reviews,
+  }
+};
 
-  const handleSetActiveTab = (active) => {
-    updateTabs((prevState) => {
-      return {
-        ...prevState,
-        active
-      };
-    });
+const Tabs = ({film}) => {
+  const [activeTab, updateTab] = useState(`overview`);
+
+  const handleSetActiveTab = (tab) => {
+    updateTab(tab);
   };
 
   return (
     <div className="movie-card__desc">
-      <TabsControl tabs={tabs} onSetActiveTab={handleSetActiveTab} />
-      <TabsContentProxy tabs={tabs} film={film} reviews={reviews}/>
+      <TabsControl tabs={tabsItems} activeTab={activeTab} onSetActiveTab={handleSetActiveTab} />
+      <TabsContentProxy tabs={tabsItems} activeTab={activeTab} film={film} reviews={reviews}/>
     </div>
   );
 };

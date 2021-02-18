@@ -7,6 +7,23 @@ import filmType from "../../../../types/film-types";
 const MAX_STARRING = 4;
 
 const OverView = ({film}) => {
+  const getStarring = () => {
+    if (film.starring.length > MAX_STARRING) {
+      return film.starring.slice(0, MAX_STARRING).map((item, index) => {
+        if (index >= MAX_STARRING - 1) {
+          return `${item} and other`;
+        }
+        return `${item}, `;
+      });
+    }
+
+    return film.starring.map((item, index) => {
+      if (index >= MAX_STARRING - 1) {
+        return item;
+      }
+      return `${item}, `;
+    });
+  };
   return (
     <Fragment>
       <div className="movie-rating">
@@ -23,25 +40,7 @@ const OverView = ({film}) => {
 
         <p className="movie-card__starring"><strong>
           Starring:
-          {
-            film.starring.length > MAX_STARRING
-              ?
-              (
-                film.starring.slice(0, MAX_STARRING).map((item, index) => {
-                  if (index >= MAX_STARRING - 1) {
-                    return `${item} and other`;
-                  }
-                  return `${item}, `;
-                })
-              )
-              :
-              film.starring.map((item, index) => {
-                if (index >= MAX_STARRING - 1) {
-                  return item;
-                }
-                return `${item}, `;
-              })
-          }
+          {getStarring()}
         </strong></p>
       </div>
     </Fragment>

@@ -7,12 +7,9 @@ const tabShape = {
 };
 
 const tabsType = {
-  items: PropTypes.shape({
-    overview: PropTypes.shape(tabShape).isRequired,
-    details: PropTypes.shape(tabShape).isRequired,
-    reviews: PropTypes.shape(tabShape).isRequired,
-  }).isRequired,
-  active: PropTypes.string.isRequired
+  overview: PropTypes.shape(tabShape).isRequired,
+  details: PropTypes.shape(tabShape).isRequired,
+  reviews: PropTypes.shape(tabShape).isRequired
 };
 
 export default tabsType;

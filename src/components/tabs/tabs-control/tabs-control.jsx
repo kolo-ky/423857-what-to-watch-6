@@ -5,28 +5,28 @@ import PropTypes from "prop-types";
 import tabsType from "../../../types/tabs-types";
 
 
-const TabsControl = ({tabs, onSetActiveTab}) => {
-  const setActiveTab = (event, activeTab) => {
+const TabsControl = ({tabs, activeTab, onSetActiveTab}) => {
+  const setActiveTab = (event, tab) => {
     event.preventDefault();
-    onSetActiveTab(activeTab);
+    onSetActiveTab(tab);
   };
 
   return (
     <nav className="movie-nav movie-card__nav">
       <ul className="movie-nav__list">
         {
-          Object.keys(tabs.items).map((tab) => {
+          Object.keys(tabs).map((tab) => {
             return (
               <li
                 key={`$tab-key-${tab}`}
-                className={`movie-nav__item ${tabs.active === tab && `movie-nav__item--active`}`}
+                className={`movie-nav__item ${activeTab === tab && `movie-nav__item--active`}`}
               >
                 <a
                   href="#"
                   className="movie-nav__link"
                   onClick={(event) => setActiveTab(event, tab)}
                 >
-                  {tabs.items[tab].title}
+                  {tabs[tab].title}
                 </a>
               </li>
             );
@@ -39,6 +39,7 @@ const TabsControl = ({tabs, onSetActiveTab}) => {
 
 TabsControl.propTypes = {
   tabs: PropTypes.shape(tabsType),
+  activeTab: PropTypes.string.isRequired,
   onSetActiveTab: PropTypes.func.isRequired
 };
 
