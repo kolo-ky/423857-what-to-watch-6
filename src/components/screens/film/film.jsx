@@ -19,7 +19,7 @@ const Film = (props) => {
 
   const film = films.find((item) => item.id === Number(id));
 
-  const moreFilmsList = getMoreFilms(films);
+  const moreFilmsList = getMoreFilms(films, film.genre);
 
   return (
     <Fragment>

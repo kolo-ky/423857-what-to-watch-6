@@ -5,7 +5,19 @@ export default [
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `comedy`,
-    year: `2014`
+    released: `2014`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 1,
@@ -13,7 +25,19 @@ export default [
     title: `Bohemian Rhapsody`,
     video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     genre: `drama`,
-    year: `2016`
+    released: `2017`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 2,
@@ -21,15 +45,39 @@ export default [
     title: `Macbeth`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `thrillers`,
-    year: `2018`
+    released: `2000`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 3,
     img: `img/aviator.jpg`,
     title: `Aviator`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    genre: `comedy`,
-    year: `2014`
+    genre: `drama`,
+    released: `1998`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 4,
@@ -37,7 +85,19 @@ export default [
     title: `We need to talk about Kevin`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `crime`,
-    year: `2020`
+    released: `2018`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 5,
@@ -45,7 +105,19 @@ export default [
     title: `What We Do in the Shadows`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `comedy`,
-    year: `2014`
+    released: `2014`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 6,
@@ -53,7 +125,19 @@ export default [
     title: `Revenant`,
     video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     genre: `drama`,
-    year: `2016`
+    released: `2014`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 7,
@@ -61,7 +145,19 @@ export default [
     title: `Johnny English`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `documentary`,
-    year: `2018`
+    released: `2013`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 8,
@@ -69,7 +165,19 @@ export default [
     title: `Shutter Island`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `romance`,
-    year: `2014`
+    released: `2012`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 9,
@@ -77,7 +185,19 @@ export default [
     title: `Pulp Fiction`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `sci-fi`,
-    year: `2014`
+    released: `2021`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 10,
@@ -85,7 +205,19 @@ export default [
     title: `No Country for Old Men`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `comedy`,
-    year: `2013`
+    released: `2020`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 11,
@@ -93,7 +225,19 @@ export default [
     title: `Snatch`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `horror`,
-    year: `2014`
+    released: `2014`,
+    runTime: `99`,
+    ratingScore: `2`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 12,
@@ -101,7 +245,19 @@ export default [
     title: `Moonrise Kingdom`,
     video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     genre: `comedy`,
-    year: `2014`
+    released: `2014`,
+    runTime: `99`,
+    ratingScore: `4`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 13,
@@ -109,7 +265,19 @@ export default [
     title: `Seven Years in Tibet`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `romance`,
-    year: `2020`
+    released: `2014`,
+    runTime: `99`,
+    ratingScore: `5`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 14,
@@ -117,7 +285,19 @@ export default [
     title: `Midnight Special`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `drama`,
-    year: `2017`
+    released: `2014`,
+    runTime: `99`,
+    ratingScore: `7`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 15,
@@ -125,7 +305,19 @@ export default [
     title: `War of the Worlds`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `crime`,
-    year: `2014`
+    released: `2014`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 16,
@@ -133,7 +325,19 @@ export default [
     title: `Dardjeeling Limited`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `comedy`,
-    year: `2014`
+    released: `2014`,
+    runTime: `99`,
+    ratingScore: `4`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 17,
@@ -141,7 +345,19 @@ export default [
     title: `Orlando`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `romance`,
-    year: `2014`
+    released: `2014`,
+    runTime: `99`,
+    ratingScore: `4`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 18,
@@ -149,7 +365,19 @@ export default [
     title: `Mindhunter`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `crime`,
-    year: `2018`
+    released: `2014`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
   {
     id: 19,
@@ -157,6 +385,18 @@ export default [
     title: `Midnight Special`,
     video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     genre: `thrillers`,
-    year: `2014`
+    released: `2014`,
+    runTime: `99`,
+    ratingScore: `8,9`,
+    ratingCount: `240 ratings`,
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+                    Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave\`s friend and protege.</p>
+
+                  <p>Gustave prides himself on providing first-class service to the hotel\`s guests, including satisfying the
+                    sexual needs of the many elderly women who stay there. When one of Gustave\`s lovers dies mysteriously,
+                    Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    isFavorite: false
   },
 ];

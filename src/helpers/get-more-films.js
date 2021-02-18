@@ -1,5 +1,5 @@
-const getMoreFilms = (films) => {
-  return films.slice(0, 4);
+const getMoreFilms = (films, genre) => {
+  return films.filter((item) => item.genre === genre);
 };
 
 export default getMoreFilms;

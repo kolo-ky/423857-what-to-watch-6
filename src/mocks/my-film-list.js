@@ -5,7 +5,7 @@ export default [
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `comedy`,
-    year: `2014`
+    released: `2014`
   },
   {
     id: 1,
@@ -13,7 +13,7 @@ export default [
     title: `Bohemian Rhapsody`,
     video: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     genre: `drama`,
-    year: `2016`
+    released: `2016`
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export default [
     title: `Macbeth`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `thrillers`,
-    year: `2018`
+    released: `2018`
   },
   {
     id: 3,
@@ -29,6 +29,6 @@ export default [
     title: `Aviator`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `comedy`,
-    year: `2014`
+    released: `2014`
   },
 ];

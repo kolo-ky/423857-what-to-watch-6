@@ -6,5 +6,5 @@ export default {
   title: PropTypes.string.isRequired,
   video: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
+  released: PropTypes.string.isRequired,
 };
