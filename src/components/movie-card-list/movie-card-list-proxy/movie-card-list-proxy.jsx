@@ -19,7 +19,6 @@ const mapStateToProps = (state) => ({
   getFilteredFilms: (moreLikeThis, genre) => {
 
     if (moreLikeThis && genre) {
-
       return state.films.filter((film) => film.genre === genre);
     }
 
