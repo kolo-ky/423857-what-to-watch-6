@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {CHANGE_GENRE} from "../../../store/action";
 
-// component
+// components
 import MovieCardList from "../movie-card-list";
 import ShowMore from "../../show-more/show-more";
 
@@ -14,7 +14,6 @@ import proxyReducer from "./reducer";
 
 // selector
 import {filmsSelector} from './selector';
-
 
 const MovieCardListProxy = ({filmGenre, getFilmsCount, changeGenre, getFilteredFilms}) => {
   const {reducer, initialState, ActionType} = proxyReducer;
