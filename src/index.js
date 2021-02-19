@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// store
+import {createStore} from "redux";
+import {Provider} from 'react-redux';
+import reducer from "./store/reducer";
+
 // mocks
 import films from './mocks/films';
 import myFilmList from './mocks/my-film-list';
@@ -14,7 +19,11 @@ const headerMovie = {
   genre: `Drama`
 };
 
+const store = createStore(reducer);
+
 ReactDOM.render(
-    <App headerMovie={headerMovie} films={films} myFilmList={myFilmList}/>,
+    <Provider store={store}>
+      <App headerMovie={headerMovie} films={films} myFilmList={myFilmList}/>
+    </Provider>,
     document.getElementById(`root`)
 );

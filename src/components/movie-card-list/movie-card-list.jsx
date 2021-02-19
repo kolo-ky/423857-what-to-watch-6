@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
+// redux
+import {connect} from 'react-redux';
+
 // components
 import MovieCardListItem from "../movie-card-list-item/movie-card-list-item";
 
-// types
-import filmType from '../../types/film-types';
-
-const MovieCardList = ({films}) => {
+const MovieCardList = ({getFilteredFilms}) => {
   // eslint-disable-next-line no-unused-vars
   const [activeMovie, setActiveMovie] = useState({
     movieId: 0
@@ -19,9 +19,11 @@ const MovieCardList = ({films}) => {
     });
   };
 
+  const filteredFilms = getFilteredFilms();
+
   return (
     <div className="catalog__movies-list" >
-      {films.map((item) => (
+      {filteredFilms.map((item) => (
         <MovieCardListItem
           key={`$-movie-card-key-${item.id}`}
           id={item.id}
@@ -35,10 +37,18 @@ const MovieCardList = ({films}) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  getFilteredFilms: () => {
+    if (state.genre) {
+      return state.films.filter((film) => film.genre === state.genre);
+    }
+
+    return state.films;
+  },
+});
+
 MovieCardList.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape(filmType)
-  ),
+  getFilteredFilms: PropTypes.func.isRequired,
 };
 
-export default MovieCardList;
+export default connect(mapStateToProps)(MovieCardList);
