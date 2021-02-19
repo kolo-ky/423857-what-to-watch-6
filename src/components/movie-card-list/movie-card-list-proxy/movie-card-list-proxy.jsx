@@ -17,7 +17,6 @@ const MovieCardListProxy = ({filmGenre, getFilteredFilms}) => {
 
 const mapStateToProps = (state) => ({
   getFilteredFilms: (filmGenre) => {
-
     if (filmGenre) {
       return state.films.filter((film) => film.genre === filmGenre);
     }
