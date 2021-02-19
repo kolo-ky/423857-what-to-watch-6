@@ -5,12 +5,8 @@ import {useParams} from 'react-router-dom';
 // types
 import filmType from "../../../types/film-types";
 
-// helpers
-import getMoreFilms from '../../../helpers/get-more-films';
-
 // components
 import Footer from '../../footer/footer';
-import MovieCardList from '../../movie-card-list/movie-card-list';
 import MovieCardListProxy from '../../movie-card-list/movie-card-list-proxy/movie-card-list-proxy';
 import MovieCardFull from "../../movie-card-full/movie-card-full";
 
