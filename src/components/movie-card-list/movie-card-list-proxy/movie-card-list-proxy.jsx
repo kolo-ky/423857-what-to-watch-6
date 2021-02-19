@@ -1,8 +1,9 @@
-import React, {useReducer} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import PropTypes from 'prop-types';
 
 // redux
 import {connect} from 'react-redux';
+import {CHANGE_GENRE} from "../../../store/action";
 
 // component
 import MovieCardList from "../movie-card-list";
@@ -14,12 +15,22 @@ import proxyReducer from "./reducer";
 // selector
 import {filmsSelector} from './selector';
 
-const MovieCardListProxy = ({filmGenre, getFilmsCount, getFilteredFilms}) => {
+
+const MovieCardListProxy = ({filmGenre, getFilmsCount, changeGenre, getFilteredFilms}) => {
   const {reducer, initialState, ActionType} = proxyReducer;
   const [localState, dispatch] = useReducer(reducer, initialState);
 
-  const films = getFilteredFilms(filmGenre, localState);
-  const filmsCount = getFilmsCount(filmGenre);
+  useEffect(() => {
+    if (filmGenre) {
+      changeGenre(filmGenre);
+    }
+    return () => {
+      changeGenre(null);
+    };
+  }, [filmGenre]);
+
+  const films = getFilteredFilms(localState);
+  const filmsCount = getFilmsCount();
 
   const handleClick = () => {
     dispatch({type: ActionType.SHOW_MORE});
@@ -40,10 +51,17 @@ const MovieCardListProxy = ({filmGenre, getFilmsCount, getFilteredFilms}) => {
 
 const mapStateToProps = filmsSelector;
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeGenre: (genre) => dispatch({type: CHANGE_GENRE, payload: genre}),
+  };
+};
+
 MovieCardListProxy.propTypes = {
   filmGenre: PropTypes.string,
   getFilmsCount: PropTypes.func,
+  changeGenre: PropTypes.func,
   getFilteredFilms: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(MovieCardListProxy);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCardListProxy);
