@@ -24,7 +24,7 @@ const Film = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <MovieCardListProxy moreLikeThis={true} genre={film.genre} />
+          <MovieCardListProxy filmGenre={film.genre} />
         </section>
 
         <Footer />

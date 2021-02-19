@@ -7,8 +7,8 @@ import {connect} from 'react-redux';
 // component
 import MovieCardList from "../movie-card-list";
 
-const MovieCardListProxy = ({moreLikeThis, genre, getFilteredFilms}) => {
-  const films = getFilteredFilms(moreLikeThis, genre);
+const MovieCardListProxy = ({filmGenre, getFilteredFilms}) => {
+  const films = getFilteredFilms(filmGenre);
 
   return (
     <MovieCardList films={films}/>
@@ -16,10 +16,10 @@ const MovieCardListProxy = ({moreLikeThis, genre, getFilteredFilms}) => {
 };
 
 const mapStateToProps = (state) => ({
-  getFilteredFilms: (moreLikeThis, genre) => {
+  getFilteredFilms: (filmGenre) => {
 
-    if (moreLikeThis && genre) {
-      return state.films.filter((film) => film.genre === genre);
+    if (filmGenre) {
+      return state.films.filter((film) => film.genre === filmGenre);
     }
 
     if (state.genre) {
@@ -31,8 +31,7 @@ const mapStateToProps = (state) => ({
 });
 
 MovieCardListProxy.propTypes = {
-  moreLikeThis: PropTypes.bool,
-  genre: PropTypes.string,
+  filmGenre: PropTypes.string,
   getFilteredFilms: PropTypes.func.isRequired
 };
 
