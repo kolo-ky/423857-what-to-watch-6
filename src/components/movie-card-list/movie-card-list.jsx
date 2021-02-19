@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 // components
 import MovieCardListItem from "../movie-card-list-item/movie-card-list-item";
-
-// types
-import filmType from '../../types/film-types';
+import filmType from "../../types/film-types";
 
 const MovieCardList = ({films}) => {
   // eslint-disable-next-line no-unused-vars
