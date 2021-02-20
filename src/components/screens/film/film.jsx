@@ -19,14 +19,11 @@ const Film = (props) => {
   return (
     <Fragment>
       <MovieCardFull film={film}/>
-
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-
           <MovieCardListProxy filmGenre={film.genre} />
         </section>
-
         <Footer />
       </div>
     </Fragment>

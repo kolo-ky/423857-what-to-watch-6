@@ -1,37 +1,66 @@
-import React from 'react';
+import React, {useEffect, useReducer} from 'react';
 import PropTypes from 'prop-types';
 
 // redux
 import {connect} from 'react-redux';
+import {CHANGE_GENRE} from "../../../store/action";
 
-// component
+// components
 import MovieCardList from "../movie-card-list";
+import ShowMore from "../../show-more/show-more";
 
-const MovieCardListProxy = ({filmGenre, getFilteredFilms}) => {
-  const films = getFilteredFilms(filmGenre);
+// proxy reducer
+import proxyReducer from "./reducer";
+
+// selector
+import {filmsSelector} from './selector';
+
+const MovieCardListProxy = ({filmGenre, getFilmsCount, changeGenre, getFilteredFilms}) => {
+  const {reducer, initialState, ActionType} = proxyReducer;
+  const [localState, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    if (filmGenre) {
+      changeGenre(filmGenre);
+    }
+    return () => {
+      changeGenre(null);
+    };
+  }, [filmGenre]);
+
+  const films = getFilteredFilms(localState);
+  const filmsCount = getFilmsCount();
+
+  const handleClick = () => {
+    dispatch({type: ActionType.SHOW_MORE});
+  };
 
   return (
-    <MovieCardList films={films}/>
+    <MovieCardList films={films}>
+      {
+        filmsCount > localState.to
+          ?
+          <ShowMore sendClick={handleClick}/>
+          :
+          null
+      }
+    </MovieCardList>
   );
 };
 
-const mapStateToProps = (state) => ({
-  getFilteredFilms: (filmGenre) => {
-    if (filmGenre) {
-      return state.films.filter((film) => film.genre === filmGenre);
-    }
+const mapStateToProps = filmsSelector;
 
-    if (state.genre) {
-      return state.films.filter((film) => film.genre === state.genre);
-    }
-
-    return state.films;
-  },
-});
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeGenre: (genre) => dispatch({type: CHANGE_GENRE, payload: genre}),
+  };
+};
 
 MovieCardListProxy.propTypes = {
   filmGenre: PropTypes.string,
+  getFilmsCount: PropTypes.func,
+  changeGenre: PropTypes.func,
   getFilteredFilms: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(MovieCardListProxy);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCardListProxy);
