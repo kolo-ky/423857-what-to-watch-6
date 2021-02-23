@@ -8,13 +8,13 @@ import filmType from '../../types/film-types';
 // components
 import AppHeader from '../app-header/app-header';
 
-const MovieCard = ({film}) => {
+const MovieCard = ({posterFilm}) => {
   const history = useHistory();
 
   return (
     <section className="movie-card">
       <div className="movie-card__bg">
-        <img src="img/bg-the-grand-budapest-hotel.jpg" alt={film.title}/>
+        <img src={posterFilm.background_image} alt={posterFilm.name}/>
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
@@ -24,18 +24,18 @@ const MovieCard = ({film}) => {
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt={film.title} width="218" height="327"/>
+            <img src={posterFilm.poster_image} alt={posterFilm.name} width="218" height="327"/>
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{film.title}</h2>
+            <h2 className="movie-card__title">{posterFilm.name}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{film.genre}</span>
-              <span className="movie-card__year">{film.released}</span>
+              <span className="movie-card__genre">{posterFilm.genre}</span>
+              <span className="movie-card__year">{posterFilm.released}</span>
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button" onClick={() => history.push(`/player/${film.id}`)}>
+              <button className="btn btn--play movie-card__button" type="button" onClick={() => history.push(`/player/${posterFilm.id}`)}>
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"/>
                 </svg>
@@ -56,7 +56,7 @@ const MovieCard = ({film}) => {
 };
 
 MovieCard.propTypes = {
-  film: PropTypes.shape(filmType)
+  posterFilm: PropTypes.shape(filmType)
 };
 
 export default MovieCard;

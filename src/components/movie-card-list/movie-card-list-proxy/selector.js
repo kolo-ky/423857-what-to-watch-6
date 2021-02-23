@@ -1,10 +1,10 @@
 export const filmsSelector = (state) => ({
-  getFilteredFilms: (localState) => {
+  getFilteredFilms: (count) => {
     if (state.genre) {
-      return state.films.filter((film) => film.genre === state.genre).slice(0, localState.to);
+      return state.films.filter((film) => film.genre === state.genre).slice(0, count);
     }
 
-    return state.films.slice(0, localState.to);
+    return state.films.slice(0, count);
   },
   getFilmsCount: () => {
     if (state.genre) {
