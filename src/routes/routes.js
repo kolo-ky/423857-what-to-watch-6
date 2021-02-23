@@ -10,4 +10,3 @@ export const getRoute = (to, param) => {
 
   return path[to];
 };
-

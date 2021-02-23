@@ -18,6 +18,9 @@ import ScrollToTop from "../scroll-to-top/scroll-to-top";
 // enhancers
 import {getMovies} from "../../store/enhancers";
 
+// routes
+import {getRoute} from "../../routes/routes";
+
 const App = ({loadMovies}) => {
 
   useEffect(() => {
@@ -28,12 +31,12 @@ const App = ({loadMovies}) => {
     <BrowserRouter>
       <ScrollToTop />
       <Switch>
-        <Route path="/" exact component={Main}/>
-        <Route path='/login' exact component={Login}/>
-        <Route path='/mylist' exact component={MyList}/>
-        <Route path='/films/:id' exact component={Film}/>
-        <Route path='/films/:id/review' exact component={AddOnReview}/>
-        <Route path='/player/:id' exact component={Player}/>
+        <Route path={getRoute(`home`)} exact component={Main}/>
+        <Route path={getRoute(`login`)} exact component={Login}/>
+        <Route path={getRoute(`mylist`)} exact component={MyList}/>
+        <Route path={getRoute(`film`, `:id`)} exact component={Film}/>
+        <Route path={getRoute(`addReview`, `:id`)} exact component={AddOnReview}/>
+        <Route path={getRoute(`player`, `:id`)} exact component={Player}/>
         <Route component={NotFound}/>
       </Switch>
     </BrowserRouter>

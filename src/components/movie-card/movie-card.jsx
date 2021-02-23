@@ -8,6 +8,9 @@ import filmType from '../../types/film-types';
 // components
 import AppHeader from '../app-header/app-header';
 
+// routes
+import {getRoute} from "../../routes/routes";
+
 const MovieCard = ({posterFilm}) => {
   const history = useHistory();
 
@@ -35,7 +38,7 @@ const MovieCard = ({posterFilm}) => {
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button" onClick={() => history.push(`/player/${posterFilm.id}`)}>
+              <button className="btn btn--play movie-card__button" type="button" onClick={() => history.push(getRoute(`player`, posterFilm.id))}>
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"/>
                 </svg>

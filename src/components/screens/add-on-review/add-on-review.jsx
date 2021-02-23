@@ -8,6 +8,9 @@ import filmType from "../../../types/film-types";
 // components
 import AddReviewForm from '../../forms/add-review-form/add-review-form';
 
+// routes
+import {getRoute} from "../../../routes/routes";
+
 const AddOnReview = ({films}) => {
   const {id} = useParams();
   const film = films.find((item) => item.id === Number(id));
@@ -23,7 +26,7 @@ const AddOnReview = ({films}) => {
 
         <header className="page-header">
           <div className="logo">
-            <Link to="/" className="logo__link">
+            <Link to={getRoute(`home`)} className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
@@ -33,7 +36,7 @@ const AddOnReview = ({films}) => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <Link to={`/films/${film.id}`} className="breadcrumbs__link">{film.title}</Link>
+                <Link to={getRoute(`film`, film.id)} className="breadcrumbs__link">{film.title}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>

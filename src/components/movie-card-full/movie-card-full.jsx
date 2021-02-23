@@ -9,6 +9,9 @@ import filmType from '../../types/film-types';
 import AppHeader from "../app-header/app-header";
 import Tabs from "../tabs/tabs";
 
+// routes
+import {getRoute} from "../../routes/routes";
+
 const MovieCardFull = ({film}) => {
   const history = useHistory();
 
@@ -44,7 +47,7 @@ const MovieCardFull = ({film}) => {
                 </svg>
                 <span>My list</span>
               </button>
-              <Link to={`/films/${film.id}/review`} className="btn movie-card__button">Add review</Link>
+              <Link to={getRoute(`addReview`, film.id)} className="btn movie-card__button">Add review</Link>
             </div>
           </div>
         </div>
