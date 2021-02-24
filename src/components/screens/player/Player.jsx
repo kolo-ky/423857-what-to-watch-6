@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 import {Link, useParams} from "react-router-dom";
 
 // types
-import filmType from "../../../types/film-types";
+import filmType from "../../../types/film-type";
+
+// routes
+import {getRoute} from "../../../routes/routes";
 
 const Player = ({films}) => {
   const {id} = useParams();
@@ -13,7 +16,7 @@ const Player = ({films}) => {
     <div className="player">
       <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
 
-      <Link to={`/films/${film.id}`}>
+      <Link to={getRoute(`film`, film.id)}>
         <button type="button" className="player__exit">Exit</button>
       </Link>
 

@@ -1,42 +1,34 @@
 export default [
   {
-    title: `All genres`,
+    title: `All categories`,
     value: null
   },
   {
-    title: `Comedies`,
-    value: `comedies`
-  },
-  {
     title: `Crime`,
-    value: `crime`
+    value: `Crime`
   },
   {
-    title: `Documentary`,
-    value: `documentary`
+    title: `Comedy`,
+    value: `Comedy`
   },
   {
-    title: `Dramas`,
-    value: `dramas`
+    title: `Drama`,
+    value: `Drama`
   },
   {
-    title: `Horror`,
-    value: `horror`
+    title: `Adventure`,
+    value: `Adventure`
   },
   {
-    title: `Kids & Family`,
-    value: `kids & family`
+    title: `Action`,
+    value: `Action`
   },
   {
-    title: `Romance`,
-    value: `romance`
+    title: `Thriller`,
+    value: `Thriller`
   },
   {
-    title: `Sci-Fi`,
-    value: `sci-fi`
-  },
-  {
-    title: `Thrillers`,
-    value: `thrillers`
+    title: `Fantasy`,
+    value: `Fantasy`
   }
 ];

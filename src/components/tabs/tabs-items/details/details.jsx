@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import filmType from "../../../../types/film-types";
+import filmType from "../../../../types/film-type";
 
 const Details = ({film}) => {
   const getStarring = () => {

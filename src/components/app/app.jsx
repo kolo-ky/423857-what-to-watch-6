@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-// types
-import filmType from '../../types/film-types';
+// redux
+import {connect} from 'react-redux';
 
 // components
 import Main from '../screens/main/main';
@@ -15,40 +15,28 @@ import Player from '../screens/player/Player';
 import NotFound from '../screens/not-found/not-found';
 import ScrollToTop from "../scroll-to-top/scroll-to-top";
 
-const App = (props) => {
-  const {films, myFilmList} = props;
-  const [posterFilm] = films;
+// enhancers
+import {getMovies} from "../../store/enhancers";
+
+// routes
+import {getRoute} from "../../routes/routes";
+
+const App = ({loadMovies}) => {
+
+  useEffect(() => {
+    loadMovies();
+  }, [loadMovies]);
 
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Switch>
-        <Route path="/" exact
-          render={() => (
-            <Main films={films} posterFilm={posterFilm}/>
-          )}
-        />
-        <Route path='/login' exact component={Login} />
-        <Route path='/mylist' exact
-          render={()=>(
-            <MyList films={myFilmList} posterFilm={posterFilm} />
-          )}
-        />
-        <Route path='/films/:id' exact
-          render={() => (
-            <Film films={films}/>
-          )}
-        />
-        <Route path='/films/:id/review' exact
-          render={() => (
-            <AddOnReview films={films}/>
-          )}
-        />
-        <Route path='/player/:id' exact
-          render={() => (
-            <Player films={films}/>
-          )}
-        />
+        <Route path={getRoute(`home`)} exact component={Main}/>
+        <Route path={getRoute(`login`)} exact component={Login}/>
+        <Route path={getRoute(`mylist`)} exact component={MyList}/>
+        <Route path={getRoute(`film`, `:id`)} exact component={Film}/>
+        <Route path={getRoute(`addReview`, `:id`)} exact component={AddOnReview}/>
+        <Route path={getRoute(`player`, `:id`)} exact component={Player}/>
         <Route component={NotFound}/>
       </Switch>
     </BrowserRouter>
@@ -56,12 +44,13 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape(filmType)
-  ),
-  myFilmList: PropTypes.arrayOf(
-      PropTypes.shape(filmType)
-  ),
+  loadMovies: PropTypes.func.isRequired
 };
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadMovies: () => dispatch(getMovies()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);

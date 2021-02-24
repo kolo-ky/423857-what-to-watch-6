@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 // redux
 import {connect} from "react-redux";
 
-// genres
-import genres from './genres';
-
 // store
-import {CHANGE_GENRE} from "../../store/action";
+import {changeGenreAction} from "../../store/action";
+
+// genres
+import genres from "./genres";
 
 const GenreList = ({genre, changeGenre}) => {
   const handleClick = (value, event) => {
@@ -20,22 +20,20 @@ const GenreList = ({genre, changeGenre}) => {
     <Fragment>
       <h2 className="catalog__title visually-hidden">Catalog</h2>
       <ul className="catalog__genres-list">
-        {
-          genres.map((item) => (
-            <li
-              className={`catalog__genres-item ${genre === item.value && `catalog__genres-item--active`}`}
-              key={`$key-genre-${item.title}`}
+        {genres.map((item) => (
+          <li
+            className={`catalog__genres-item ${genre === item.value && `catalog__genres-item--active`}`}
+            key={`$key-genre-${item.title}`}
+          >
+            <a
+              href="#"
+              className="catalog__genres-link"
+              onClick={handleClick.bind(undefined, item.value)}
             >
-              <a
-                href="#"
-                className="catalog__genres-link"
-                onClick={handleClick.bind(undefined, item.value)}
-              >
-                {item.title}
-              </a>
-            </li>
-          ))
-        }
+              {item.title}
+            </a>
+          </li>
+        ))}
       </ul>
     </Fragment>
   );
@@ -46,10 +44,13 @@ GenreList.propTypes = {
   changeGenre: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({genre: state.genre});
+const mapStateToProps = (state) => ({
+  genre: state.genre,
+});
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeGenre: (value) => dispatch({type: CHANGE_GENRE, payload: value}),
+    changeGenre: (value) => dispatch(changeGenreAction(value)),
   };
 };
 

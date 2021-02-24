@@ -14,7 +14,7 @@ import TabsContentProxy from './tabs-content-proxy/tabs-content-proxy';
 import reviews from '../../mocks/reviews';
 
 // types
-import filmType from '../../types/film-types';
+import filmType from '../../types/film-type';
 
 const tabsItems = {
   overview: {

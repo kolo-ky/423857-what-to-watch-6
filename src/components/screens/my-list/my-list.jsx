@@ -1,51 +1,71 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
 // components
 import MovieCardList from '../../movie-card-list/movie-card-list';
 import Footer from '../../footer/footer';
+import Loading from "../../loading/loading";
+
+// redux
+import {connect} from 'react-redux';
 
 // types
-import filmType from '../../../types/film-types';
+import filmType from '../../../types/film-type';
 
-const MyList = (props) => {
-  const {films} = props;
+// getRoute
+import {getRoute} from '../../../routes/routes';
 
-  return (
-    <div className="user-page">
-      <header className="page-header user-page__head">
-        <div className="logo">
-          <a href="main.html" className="logo__link">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
+const MyList = ({films, isFilmsAvailable, loading}) => {
+  if (loading) {
+    return <Loading />;
+  }
 
-        <h1 className="page-title user-page__title">My list</h1>
-
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+  if (isFilmsAvailable) {
+    return (
+      <div className="user-page">
+        <header className="page-header user-page__head">
+          <div className="logo">
+            <Link to={getRoute(`home`)} className="logo__link">
+              <span className="logo__letter logo__letter--1">W</span>
+              <span className="logo__letter logo__letter--2">T</span>
+              <span className="logo__letter logo__letter--3">W</span>
+            </Link>
           </div>
-        </div>
-      </header>
 
-      <section className="catalog">
-        <h2 className="catalog__title visually-hidden">Catalog</h2>
+          <h1 className="page-title user-page__title">My list</h1>
 
-        <MovieCardList films={films} />
-      </section>
+          <div className="user-block">
+            <div className="user-block__avatar">
+              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+            </div>
+          </div>
+        </header>
 
-      <Footer />
-    </div>
-  );
+        <section className="catalog">
+          <h2 className="catalog__title visually-hidden">Catalog</h2>
+          <MovieCardList films={films} />
+        </section>
+        <Footer />
+      </div>
+    );
+  }
+
+  return null;
 };
 
 MyList.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmType)
   ),
+  loading: PropTypes.bool,
+  isFilmsAvailable: PropTypes.bool
 };
 
-export default MyList;
+const mapStateToProps = (state) => ({
+  loading: state.loading,
+  isFilmsAvailable: state.films.length > 0,
+  films: state.films.filter((film) => film.is_favorite)
+});
+
+export default connect(mapStateToProps)(MyList);

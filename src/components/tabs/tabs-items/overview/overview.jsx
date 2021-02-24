@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from "prop-types";
 
 // types
-import filmType from "../../../../types/film-types";
+import filmType from "../../../../types/film-type";
 
 const MAX_STARRING = 4;
 

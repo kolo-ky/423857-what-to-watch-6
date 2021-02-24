@@ -1,23 +1,21 @@
-import React, {useEffect, useReducer} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 
 // redux
 import {connect} from 'react-redux';
-import {CHANGE_GENRE} from "../../../store/action";
+import {changeGenreAction} from "../../../store/action";
 
 // components
 import MovieCardList from "../movie-card-list";
 import ShowMore from "../../show-more/show-more";
 
-// proxy reducer
-import proxyReducer from "./reducer";
-
 // selector
 import {filmsSelector} from './selector';
 
+const NUMBER_OF_FILMS = 8;
+
 const MovieCardListProxy = ({filmGenre, getFilmsCount, changeGenre, getFilteredFilms}) => {
-  const {reducer, initialState, ActionType} = proxyReducer;
-  const [localState, dispatch] = useReducer(reducer, initialState);
+  const [count, setCount] = useState(NUMBER_OF_FILMS);
 
   useEffect(() => {
     if (filmGenre) {
@@ -28,17 +26,17 @@ const MovieCardListProxy = ({filmGenre, getFilmsCount, changeGenre, getFilteredF
     };
   }, [filmGenre]);
 
-  const films = getFilteredFilms(localState);
+  const films = getFilteredFilms(count);
   const filmsCount = getFilmsCount();
 
   const handleClick = () => {
-    dispatch({type: ActionType.SHOW_MORE});
+    setCount((prevState) => prevState + NUMBER_OF_FILMS);
   };
 
   return (
     <MovieCardList films={films}>
       {
-        filmsCount > localState.to
+        filmsCount > count
           ?
           <ShowMore sendClick={handleClick}/>
           :
@@ -52,7 +50,7 @@ const mapStateToProps = filmsSelector;
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeGenre: (genre) => dispatch({type: CHANGE_GENRE, payload: genre}),
+    changeGenre: (genre) => dispatch(changeGenreAction(genre)),
   };
 };
 
