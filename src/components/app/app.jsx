@@ -25,7 +25,7 @@ const App = ({loadMovies}) => {
 
   useEffect(() => {
     loadMovies();
-  });
+  }, [loadMovies]);
 
   return (
     <BrowserRouter>

@@ -7,17 +7,14 @@ import {connect} from "react-redux";
 // store
 import {changeGenreAction} from "../../store/action";
 
-const GenreList = ({genre, genres, changeGenre}) => {
+// genres
+import genres from "./genres";
+
+const GenreList = ({genre, changeGenre}) => {
   const handleClick = (value, event) => {
     event.preventDefault();
     changeGenre(value);
   };
-
-  genres.unshift({
-    title: `All categories`, value: null
-  });
-
-  genres = Array.from(new Set(genres.map(JSON.stringify))).map(JSON.parse);
 
   return (
     <Fragment>
@@ -44,7 +41,6 @@ const GenreList = ({genre, genres, changeGenre}) => {
 
 GenreList.propTypes = {
   genre: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null]).isRequired]),
-  genres: PropTypes.array,
   changeGenre: PropTypes.func.isRequired
 };
 

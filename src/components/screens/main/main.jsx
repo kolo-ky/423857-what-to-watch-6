@@ -9,7 +9,7 @@ import MovieCard from '../../movie-card/movie-card';
 import Footer from '../../footer/footer';
 import GenreList from '../../genre-list/genre-list';
 import Loading from '../../loading/loading';
-import filmType from "../../../types/film-types";
+import filmType from "../../../types/film-type";
 
 const Main = ({loading, isFilmsAvailable, films}) => {
   if (loading) {
@@ -18,31 +18,24 @@ const Main = ({loading, isFilmsAvailable, films}) => {
     );
   }
 
-  if (isFilmsAvailable) {
-    const [posterFilm] = films;
-
-    let genres = films.map((film) => {
-      return {
-        title: film.genre,
-        value: film.genre
-      };
-    });
-
-    return (
-      <Fragment>
-        <MovieCard posterFilm={posterFilm}/>
-        <div className="page-content">
-          <section className="catalog">
-            <GenreList genres={genres}/>
-            <MovieCardListProxy />
-          </section>
-          <Footer />
-        </div>
-      </Fragment>
-    );
+  if (!isFilmsAvailable) {
+    return null;
   }
 
-  return null;
+  const [posterFilm] = films;
+
+  return (
+    <Fragment>
+      <MovieCard posterFilm={posterFilm}/>
+      <div className="page-content">
+        <section className="catalog">
+          <GenreList />
+          <MovieCardListProxy />
+        </section>
+        <Footer />
+      </div>
+    </Fragment>
+  );
 };
 
 const mapStateToProps = (state) => ({

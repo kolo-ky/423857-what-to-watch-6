@@ -1,5 +1,5 @@
 export const CHANGE_GENRE = `CHANGE_GENRE`;
-export const SET_LOADING = `SET_LOADING`;
+export const TOGGLE_LOADING = `TOGGLE_LOADING`;
 export const SET_MOVIES = `SET_MOVIES`;
 
 export const changeGenreAction = (payload) => {
@@ -9,9 +9,9 @@ export const changeGenreAction = (payload) => {
   };
 };
 
-export const setLoading = () => {
+export const toggleLoading = () => {
   return {
-    type: SET_LOADING
+    type: TOGGLE_LOADING
   };
 };
 

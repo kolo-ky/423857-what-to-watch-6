@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 // components
 import MovieCardListItem from "../movie-card-list-item/movie-card-list-item";
-import filmType from "../../types/film-types";
+import filmType from "../../types/film-type";
 
 const MovieCardList = ({films, children}) => {
   return (

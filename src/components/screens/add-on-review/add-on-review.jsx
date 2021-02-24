@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {Link, useParams} from "react-router-dom";
 
 // types
-import filmType from "../../../types/film-types";
+import filmType from "../../../types/film-type";
 
 // components
 import AddReviewForm from '../../forms/add-review-form/add-review-form';

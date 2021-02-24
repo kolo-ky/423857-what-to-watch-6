@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import VideoPlayer from "../videoplayer/videoplayer";
 
 // types
-import filmType from '../../types/film-types';
+import filmType from '../../types/film-type';
 
 // routes
 import {getRoute} from "../../routes/routes";

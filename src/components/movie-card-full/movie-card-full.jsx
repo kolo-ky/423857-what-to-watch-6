@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {Link, useHistory} from "react-router-dom";
 
 // types
-import filmType from '../../types/film-types';
+import filmType from '../../types/film-type';
 
 // components
 import AppHeader from "../app-header/app-header";

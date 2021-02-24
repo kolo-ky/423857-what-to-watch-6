@@ -11,7 +11,7 @@ import Loading from "../../loading/loading";
 import {connect} from 'react-redux';
 
 // types
-import filmType from '../../../types/film-types';
+import filmType from '../../../types/film-type';
 
 // getRoute
 import {getRoute} from '../../../routes/routes';

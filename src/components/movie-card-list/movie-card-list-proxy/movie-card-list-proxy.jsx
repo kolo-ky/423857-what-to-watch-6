@@ -15,7 +15,7 @@ import {filmsSelector} from './selector';
 const NUMBER_OF_FILMS = 8;
 
 const MovieCardListProxy = ({filmGenre, getFilmsCount, changeGenre, getFilteredFilms}) => {
-  const [count, updateCount] = useState(NUMBER_OF_FILMS);
+  const [count, setCount] = useState(NUMBER_OF_FILMS);
 
   useEffect(() => {
     if (filmGenre) {
@@ -30,7 +30,7 @@ const MovieCardListProxy = ({filmGenre, getFilmsCount, changeGenre, getFilteredF
   const filmsCount = getFilmsCount();
 
   const handleClick = () => {
-    updateCount((prevState) => prevState * 2);
+    setCount((prevState) => prevState + NUMBER_OF_FILMS);
   };
 
   return (

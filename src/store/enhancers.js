@@ -1,13 +1,13 @@
 // actions
-import {setLoading, setMovies} from "./action";
+import {toggleLoading, setMovies} from "./action";
 
 // api
 import {getMoviesApi} from "../api/movies";
 
 export const getMovies = () => (next, _getState) => {
-  next(setLoading());
+  next(toggleLoading());
   getMoviesApi().then((resp) => {
     next(setMovies(resp.data));
-    next(setLoading());
+    next(toggleLoading());
   });
 };
