@@ -1,6 +1,9 @@
 export const CHANGE_GENRE = `CHANGE_GENRE`;
 export const TOGGLE_LOADING = `TOGGLE_LOADING`;
 export const SET_MOVIES = `SET_MOVIES`;
+export const REQUIRED_AUTH = `REQUIRED_AUTH`;
+export const SET_USER = `SET_USER`;
+export const LOGOUT = `LOGOUT`;
 
 export const changeGenreAction = (payload) => {
   return {
@@ -18,6 +21,27 @@ export const toggleLoading = () => {
 export const setMovies = (payload) => {
   return {
     type: SET_MOVIES,
+    payload
+  };
+};
+
+export const requiredAuth = (payload) => {
+  return {
+    type: REQUIRED_AUTH,
+    payload
+  };
+};
+
+export const logout = (payload) => {
+  return {
+    type: LOGOUT,
+    payload
+  };
+};
+
+export const setUser = (payload) => {
+  return {
+    type: SET_USER,
     payload
   };
 };

@@ -4,10 +4,12 @@ import {Link} from 'react-router-dom';
 // routes
 import {getRoute} from "../../routes/routes";
 
+// components
+import User from "./user/user";
+
 const AppHeader = () => {
   return (
     <header className="page-header movie-card__head">
-
       <div className="logo">
         <Link to={getRoute(`home`)} className="logo__link">
           <span className="logo__letter logo__letter--1">W</span>
@@ -15,12 +17,7 @@ const AppHeader = () => {
           <span className="logo__letter logo__letter--3">W</span>
         </Link>
       </div>
-
-      <div className="user-block">
-        <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-        </div>
-      </div>
+      <User />
     </header>
   );
 };

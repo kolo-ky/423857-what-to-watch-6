@@ -10,11 +10,11 @@ import MovieCardList from "../movie-card-list";
 import ShowMore from "../../show-more/show-more";
 
 // selector
-import {filmsSelector} from './selector';
+import {getFilteredFilms, getFilmsCount} from './selector';
 
 const NUMBER_OF_FILMS = 8;
 
-const MovieCardListProxy = ({filmGenre, getFilmsCount, changeGenre, getFilteredFilms}) => {
+const MovieCardListProxy = ({filmGenre, filmsCount, changeGenre, getFilms}) => {
   const [count, setCount] = useState(NUMBER_OF_FILMS);
 
   useEffect(() => {
@@ -26,8 +26,7 @@ const MovieCardListProxy = ({filmGenre, getFilmsCount, changeGenre, getFilteredF
     };
   }, [filmGenre]);
 
-  const films = getFilteredFilms(count);
-  const filmsCount = getFilmsCount();
+  const films = getFilms(count);
 
   const handleClick = () => {
     setCount((prevState) => prevState + NUMBER_OF_FILMS);
@@ -35,18 +34,17 @@ const MovieCardListProxy = ({filmGenre, getFilmsCount, changeGenre, getFilteredF
 
   return (
     <MovieCardList films={films}>
-      {
-        filmsCount > count
-          ?
-          <ShowMore sendClick={handleClick}/>
-          :
-          null
-      }
+      {filmsCount > count && (
+        <ShowMore sendClick={handleClick}/>
+      )}
     </MovieCardList>
   );
 };
 
-const mapStateToProps = filmsSelector;
+const mapStateToProps = (state) => ({
+  getFilms: getFilteredFilms(state),
+  filmsCount: getFilmsCount(state)
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -56,9 +54,9 @@ const mapDispatchToProps = (dispatch) => {
 
 MovieCardListProxy.propTypes = {
   filmGenre: PropTypes.string,
-  getFilmsCount: PropTypes.func,
+  filmsCount: PropTypes.number,
   changeGenre: PropTypes.func,
-  getFilteredFilms: PropTypes.func.isRequired
+  getFilms: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCardListProxy);

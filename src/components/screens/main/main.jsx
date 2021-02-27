@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useMemo} from 'react';
 import PropTypes from 'prop-types';
 
 import {connect} from "react-redux";
@@ -11,18 +11,14 @@ import GenreList from '../../genre-list/genre-list';
 import Loading from '../../loading/loading';
 import filmType from "../../../types/film-type";
 
-const Main = ({loading, isFilmsAvailable, films}) => {
+const Main = ({loading, films}) => {
+  const posterFilm = useMemo(() => films && films[0], [films]);
+
   if (loading) {
     return (
       <Loading/>
     );
   }
-
-  if (!isFilmsAvailable) {
-    return null;
-  }
-
-  const [posterFilm] = films;
 
   return (
     <Fragment>
@@ -46,7 +42,6 @@ const mapStateToProps = (state) => ({
 
 Main.propTypes = {
   loading: PropTypes.bool,
-  isFilmsAvailable: PropTypes.bool,
   films: PropTypes.arrayOf(
       PropTypes.shape(filmType)
   )

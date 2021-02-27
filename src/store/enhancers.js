@@ -1,13 +1,36 @@
 // actions
-import {toggleLoading, setMovies} from "./action";
+import {toggleLoading, setMovies, requiredAuth, setUser} from "./action";
 
 // api
 import {getMoviesApi} from "../api/movies";
+import {checkAuthApi, loginApi, logoutApi} from "../api/user";
 
-export const getMovies = () => (next, _getState) => {
-  next(toggleLoading());
+export const getMovies = () => (dispatch, _getState) => {
   getMoviesApi().then((resp) => {
-    next(setMovies(resp.data));
-    next(toggleLoading());
-  });
+    dispatch(setMovies(resp.data));
+    dispatch(toggleLoading());
+  }).catch(() => {});
+};
+
+export const checkAuth = () => (dispatch, _getState) => {
+  checkAuthApi().then((resp) => {
+    dispatch(requiredAuth(true));
+    dispatch(setUser(resp.data));
+  }).catch(() => {});
+};
+
+export const login = (params) => (dispatch, _getState) => {
+  return loginApi(params).then((resp) => {
+    dispatch(requiredAuth(true));
+    dispatch(setUser(resp.data));
+    return Promise.resolve();
+  }).catch(() => {});
+};
+
+export const logout = (params) => (dispatch, _getState) => {
+  return logoutApi().then(() => {
+    dispatch(requiredAuth(false));
+    dispatch(setUser(params));
+    return Promise.resolve();
+  }).catch(() => {});
 };
