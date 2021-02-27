@@ -25,7 +25,7 @@ MovieCardList.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmType)
   ),
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.oneOf([null]).isRequired]),
+  children: PropTypes.node,
 };
 
 export default MovieCardList;

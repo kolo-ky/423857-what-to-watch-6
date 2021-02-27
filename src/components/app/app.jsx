@@ -15,15 +15,19 @@ import Player from '../screens/player/Player';
 import NotFound from '../screens/not-found/not-found';
 import ScrollToTop from "../scroll-to-top/scroll-to-top";
 
+// private route
+import PrivateRoute from "../private-route/private-route";
+
 // enhancers
-import {getMovies} from "../../store/enhancers";
+import {getMovies, checkAuth} from "../../store/enhancers";
 
 // routes
 import {getRoute} from "../../routes/routes";
 
-const App = ({loadMovies}) => {
+const App = ({loadMovies, getAuth}) => {
 
   useEffect(() => {
+    getAuth();
     loadMovies();
   }, [loadMovies]);
 
@@ -33,10 +37,10 @@ const App = ({loadMovies}) => {
       <Switch>
         <Route path={getRoute(`home`)} exact component={Main}/>
         <Route path={getRoute(`login`)} exact component={Login}/>
-        <Route path={getRoute(`mylist`)} exact component={MyList}/>
-        <Route path={getRoute(`film`, `:id`)} exact component={Film}/>
-        <Route path={getRoute(`addReview`, `:id`)} exact component={AddOnReview}/>
-        <Route path={getRoute(`player`, `:id`)} exact component={Player}/>
+        <PrivateRoute path={getRoute(`mylist`)} exact component={MyList}/>
+        <PrivateRoute path={getRoute(`film`, `:id`)} exact component={Film}/>
+        <PrivateRoute path={getRoute(`addReview`, `:id`)} exact component={AddOnReview}/>
+        <PrivateRoute path={getRoute(`player`, `:id`)} exact component={Player}/>
         <Route component={NotFound}/>
       </Switch>
     </BrowserRouter>
@@ -44,12 +48,14 @@ const App = ({loadMovies}) => {
 };
 
 App.propTypes = {
-  loadMovies: PropTypes.func.isRequired
+  loadMovies: PropTypes.func.isRequired,
+  getAuth: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     loadMovies: () => dispatch(getMovies()),
+    getAuth: () => dispatch(checkAuth()),
   };
 };
 
