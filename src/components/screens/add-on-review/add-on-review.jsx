@@ -10,6 +10,8 @@ import {filmSelector} from "../../../selectors/movie-selector";
 
 // components
 import AddReviewForm from '../../forms/add-review-form/add-review-form';
+import AppHeader from "../../app-header/app-header";
+import User from "../../app-header/user/user";
 
 // routes
 import {getRoute} from "../../../routes/routes";
@@ -28,20 +30,12 @@ const AddOnReview = ({getFilm}) => {
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
         <div className="movie-card__bg">
-          <img src={film.poster_image} alt={film.name}/>
+          <img src={film.background_image} alt={film.name}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header">
-          <div className="logo">
-            <Link to={getRoute(`home`)} className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
-
+        <AppHeader>
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
@@ -52,13 +46,8 @@ const AddOnReview = ({getFilm}) => {
               </li>
             </ul>
           </nav>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-            </div>
-          </div>
-        </header>
+          <User />
+        </AppHeader>
 
         <div className="movie-card__poster movie-card__poster--small">
           <img src={film.background_image} alt={film.name} width="218"
@@ -67,7 +56,6 @@ const AddOnReview = ({getFilm}) => {
       </div>
 
       <AddReviewForm id={film.id}/>
-
     </section>
   );
 };

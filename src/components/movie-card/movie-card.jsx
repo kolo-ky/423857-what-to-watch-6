@@ -7,6 +7,7 @@ import filmType from '../../types/film-type';
 
 // components
 import AppHeader from '../app-header/app-header';
+import User from "../app-header/user/user";
 
 // routes
 import {getRoute} from "../../routes/routes";
@@ -22,7 +23,9 @@ const MovieCard = ({posterFilm}) => {
 
       <h1 className="visually-hidden">WTW</h1>
 
-      <AppHeader />
+      <AppHeader>
+        <User />
+      </AppHeader>
 
       <div className="movie-card__wrap">
         <div className="movie-card__info">

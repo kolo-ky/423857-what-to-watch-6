@@ -12,6 +12,7 @@ import reviewTypes from '../../types/review-types';
 // components
 import AppHeader from "../app-header/app-header";
 import Tabs from "../tabs/tabs";
+import User from "../app-header/user/user";
 
 // routes
 import {getRoute} from "../../routes/routes";
@@ -28,7 +29,9 @@ const MovieCardFull = ({film, isAuth, comments}) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <AppHeader />
+        <AppHeader>
+          <User />
+        </AppHeader>
 
         <div className="movie-card__wrap">
           <div className="movie-card__desc">
