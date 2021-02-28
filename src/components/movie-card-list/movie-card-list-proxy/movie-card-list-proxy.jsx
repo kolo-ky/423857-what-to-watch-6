@@ -10,7 +10,7 @@ import MovieCardList from "../movie-card-list";
 import ShowMore from "../../show-more/show-more";
 
 // selector
-import {getFilteredFilms, getFilmsCount} from './selector';
+import {getFilteredFilms, getFilmsCount} from '../../../selectors/movies-selector';
 
 const NUMBER_OF_FILMS = 8;
 

@@ -13,9 +13,10 @@ export const getMovies = () => (dispatch, _getState) => {
 };
 
 export const checkAuth = () => (dispatch, _getState) => {
-  checkAuthApi().then((resp) => {
+  return checkAuthApi().then((resp) => {
     dispatch(requiredAuth(true));
     dispatch(setUser(resp.data));
+    return Promise.resolve();
   }).catch(() => {});
 };
 

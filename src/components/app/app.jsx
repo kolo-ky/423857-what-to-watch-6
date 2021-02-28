@@ -14,6 +14,7 @@ import MyList from '../screens/my-list/my-list';
 import Player from '../screens/player/Player';
 import NotFound from '../screens/not-found/not-found';
 import ScrollToTop from "../scroll-to-top/scroll-to-top";
+import Loading from "../loading/loading";
 
 // private route
 import PrivateRoute from "../private-route/private-route";
@@ -24,12 +25,17 @@ import {getMovies, checkAuth} from "../../store/enhancers";
 // routes
 import {getRoute} from "../../routes/routes";
 
-const App = ({loadMovies, getAuth}) => {
+const App = ({loadMovies, loading, getAuth}) => {
 
   useEffect(() => {
-    getAuth();
-    loadMovies();
-  }, [loadMovies]);
+    getAuth().then(() => {
+      loadMovies();
+    });
+  }, [getAuth]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <BrowserRouter>
@@ -38,10 +44,10 @@ const App = ({loadMovies, getAuth}) => {
         <Route path={getRoute(`home`)} exact component={Main}/>
         <Route path={getRoute(`login`)} exact component={Login}/>
         <PrivateRoute path={getRoute(`mylist`)} exact component={MyList}/>
-        <PrivateRoute path={getRoute(`film`, `:id`)} exact component={Film}/>
+        <Route path={getRoute(`film`, `:id`)} exact component={Film}/>
         <PrivateRoute path={getRoute(`addReview`, `:id`)} exact component={AddOnReview}/>
         <PrivateRoute path={getRoute(`player`, `:id`)} exact component={Player}/>
-        <Route component={NotFound}/>
+        <Route path="*" component={NotFound}/>
       </Switch>
     </BrowserRouter>
   );
@@ -49,7 +55,8 @@ const App = ({loadMovies, getAuth}) => {
 
 App.propTypes = {
   loadMovies: PropTypes.func.isRequired,
-  getAuth: PropTypes.func.isRequired
+  getAuth: PropTypes.func.isRequired,
+  loading: PropTypes.bool
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -59,4 +66,8 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = (state) => ({
+  loading: state.loading
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

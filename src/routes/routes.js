@@ -6,6 +6,7 @@ export const getRoute = (to, param) => {
     film: `/film/${param}`,
     addReview: `/films/${param}/review`,
     player: `/player/${param}`,
+    notFound: `/404`
   };
 
   return path[to];

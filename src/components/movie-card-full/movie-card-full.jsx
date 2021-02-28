@@ -1,9 +1,13 @@
-import React from "react";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import {Link, useHistory} from "react-router-dom";
 
+// redux
+import {connect} from 'react-redux';
+
 // types
 import filmType from '../../types/film-type';
+import reviewTypes from '../../types/review-types';
 
 // components
 import AppHeader from "../app-header/app-header";
@@ -12,14 +16,14 @@ import Tabs from "../tabs/tabs";
 // routes
 import {getRoute} from "../../routes/routes";
 
-const MovieCardFull = ({film}) => {
+const MovieCardFull = ({film, isAuth, comments}) => {
   const history = useHistory();
 
   return (
-    <section className="movie-card movie-card--full">
+    <section className="movie-card movie-card--full" style={{background: film.background_color}}>
       <div className="movie-card__hero">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+          <img src={film.background_image} alt={film.name}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -28,7 +32,7 @@ const MovieCardFull = ({film}) => {
 
         <div className="movie-card__wrap">
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{film.title}</h2>
+            <h2 className="movie-card__title">{film.name}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{film.genre}</span>
               <span className="movie-card__year">{film.released}</span>
@@ -41,13 +45,17 @@ const MovieCardFull = ({film}) => {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-              </button>
-              <Link to={getRoute(`addReview`, film.id)} className="btn movie-card__button">Add review</Link>
+              {isAuth && (
+                <Fragment>
+                  <button className="btn btn--list movie-card__button" type="button">
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>
+                    <span>My list</span>
+                  </button>
+                  <Link to={getRoute(`addReview`, film.id)} className="btn movie-card__button">Add review</Link>
+                </Fragment>
+              )}
             </div>
           </div>
         </div>
@@ -56,11 +64,11 @@ const MovieCardFull = ({film}) => {
       <div className="movie-card__wrap movie-card__translate-top">
         <div className="movie-card__info">
           <div className="movie-card__poster movie-card__poster--big">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
+            <img src={film.poster_image} alt={film.name} width="218"
               height="327"/>
           </div>
 
-          <Tabs film={film}/>
+          <Tabs film={film} reviews={comments}/>
 
         </div>
       </div>
@@ -69,7 +77,15 @@ const MovieCardFull = ({film}) => {
 };
 
 MovieCardFull.propTypes = {
-  film: PropTypes.shape(filmType)
+  film: PropTypes.shape(filmType),
+  isAuth: PropTypes.bool.isRequired,
+  comments: PropTypes.arrayOf(
+      PropTypes.shape(reviewTypes)
+  )
 };
 
-export default MovieCardFull;
+const mapStateToProps = (state) => ({
+  isAuth: state.authorizationStatus
+});
+
+export default connect(mapStateToProps)(MovieCardFull);

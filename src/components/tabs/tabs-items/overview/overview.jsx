@@ -18,18 +18,50 @@ const OverView = ({film}) => {
     }
 
     return film.starring.map((item, index) => {
-      if (index >= MAX_STARRING - 1) {
+      if (index >= film.starring.length - 1) {
         return item;
       }
       return `${item}, `;
     });
   };
+
+  const movieLevels = [
+    {
+      name: `Very bad...`,
+      rating: 1
+    },
+    {
+      name: `Bad`,
+      rating: 3
+    },
+    {
+      name: `Not bad`,
+      rating: 5
+    },
+    {
+      name: `Good`,
+      rating: 6
+    },
+    {
+      name: `Very good`,
+      rating: 8
+    },
+    {
+      name: `Awesome!`,
+      rating: 10
+    }
+  ];
+
+  const getMovieLevel = (rating) => {
+    return movieLevels.find((level) => level.rating >= rating).name;
+  };
+
   return (
     <Fragment>
       <div className="movie-rating">
-        <div className="movie-rating__score">{film.ratingScore}</div>
+        <div className="movie-rating__score">{film.rating}</div>
         <p className="movie-rating__meta">
-          <span className="movie-rating__level">Very good</span>
+          <span className="movie-rating__level">{getMovieLevel(film.rating)}</span>
           <span className="movie-rating__count">{film.ratingCount}</span>
         </p>
       </div>

@@ -10,11 +10,9 @@ import Reviews from "./tabs-items/reviews/reviews";
 // proxy
 import TabsContentProxy from './tabs-content-proxy/tabs-content-proxy';
 
-// mocha
-import reviews from '../../mocks/reviews';
-
 // types
 import filmType from '../../types/film-type';
+import reviewTypes from '../../types/review-types';
 
 const tabsItems = {
   overview: {
@@ -34,7 +32,7 @@ const tabsItems = {
   }
 };
 
-const Tabs = ({film}) => {
+const Tabs = ({film, reviews}) => {
   const [activeTab, updateTab] = useState(`overview`);
 
   const handleSetActiveTab = (tab) => {
@@ -44,13 +42,16 @@ const Tabs = ({film}) => {
   return (
     <div className="movie-card__desc">
       <TabsControl tabs={tabsItems} activeTab={activeTab} onSetActiveTab={handleSetActiveTab} />
-      <TabsContentProxy tabs={tabsItems} activeTab={activeTab} film={film} reviews={reviews}/>
+      <TabsContentProxy tabs={tabsItems} activeTab={activeTab} film={film} reviews={reviews} />
     </div>
   );
 };
 
 Tabs.propTypes = {
-  film: PropTypes.shape(filmType)
+  film: PropTypes.shape(filmType),
+  reviews: PropTypes.arrayOf(
+      PropTypes.shape(reviewTypes)
+  )
 };
 
 export default Tabs;

@@ -1,31 +1,58 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import PropTypes from "prop-types";
+import {useHistory} from 'react-router-dom';
 
 // const
 const STARS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-// eslint-disable-next-line no-unused-vars
-const AddReviewForm = ({id}) => {
+// api
+import {addMovieCommentsApi} from "../../../api/comments";
+import {getRoute} from "../../../routes/routes";
 
+const AddReviewForm = ({id}) => {
+  const history = useHistory();
   const [reviewForm, setReviewForm] = useState({
     rating: 0,
-    reviewText: ``,
+    comment: ``,
   });
+
+  const [isFormSubmit, setSubmit] = useState(false);
+
+  const textSymbolCount = {
+    min: 50,
+    max: 400
+  };
+
+  const [isButtonActive, setButtonActive] = useState(false);
+  const [disableForm, setDisableForm] = useState(false);
+
+  useEffect(() => {
+    if (isFormSubmit) {
+      setDisableForm(true);
+      addMovieCommentsApi(id, reviewForm).then(() => {
+        history.push(getRoute(`film`, id));
+      });
+    }
+  }, [isFormSubmit]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-
-    setReviewForm({
-      rating: 0,
-      reviewText: ``,
-    });
+    setSubmit(true);
   };
 
   const handleChangeText = ({target}) => {
+    if (target.value.length > textSymbolCount.max) {
+      return;
+    }
+
     setReviewForm({
       ...reviewForm,
-      reviewText: target.value
+      comment: target.value
     });
+
+    if (target.value.length >= textSymbolCount.min) {
+      setButtonActive(true);
+    }
   };
 
   const handleClick = (star) => {
@@ -51,6 +78,7 @@ const AddReviewForm = ({id}) => {
                     name="rating"
                     checked={reviewForm.rating >= star}
                     onChange={(evt) => evt.preventDefault()}
+                    disabled={disableForm}
                   />
                   <label
                     key={`$label-${star}`}
@@ -68,19 +96,23 @@ const AddReviewForm = ({id}) => {
 
         <div className="add-review__text">
           <textarea className="add-review__textarea" name="review-text" id="review-text"
-            placeholder="Review text" value={reviewForm.reviewText} onChange={handleChangeText}></textarea>
+            placeholder="Review text" value={reviewForm.comment} onChange={handleChangeText} disabled={disableForm}/>
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit">Post</button>
+            <button className="add-review__btn" type="submit" disabled={!isButtonActive || disableForm}>Post</button>
           </div>
 
         </div>
       </form>
+      <span className="add-review__textarea">
+        <b>Note:</b> minimum number of characters in a message 50, maximum 400
+      </span>
     </div>
   );
 };
 
 AddReviewForm.propTypes = {
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
+  submitForm: PropTypes.func
 };
 
 export default AddReviewForm;
