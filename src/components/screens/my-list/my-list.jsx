@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 // components
 import MovieCardList from '../../movie-card-list/movie-card-list';
 import Footer from '../../footer/footer';
-import Loading from "../../loading/loading";
-import AppHeader from "../../app-header/app-header";
 import User from "../../app-header/user/user";
 
 // redux
@@ -14,42 +13,42 @@ import {connect} from 'react-redux';
 // types
 import filmType from '../../../types/film-type';
 
-const MyList = ({films, isFilmsAvailable, loading}) => {
-  if (loading) {
-    return <Loading />;
-  }
+// routes
+import {getRoute} from "../../../routes/routes";
 
-  if (isFilmsAvailable) {
-    return (
-      <div className="user-page">
-        <AppHeader>
-          <h1 className="page-title user-page__title">My list</h1>
-          <User />
-        </AppHeader>
+const MyList = ({films}) => {
+  return (
+    <div className="user-page">
+      <header className="page-header user-page__head">
+        <div className="logo">
+          <Link to={getRoute(`home`)} className="logo__link">
+            <span className="logo__letter logo__letter--1">W</span>
+            <span className="logo__letter logo__letter--2">T</span>
+            <span className="logo__letter logo__letter--3">W</span>
+          </Link>
+        </div>
 
-        <section className="catalog">
-          <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <MovieCardList films={films} />
-        </section>
-        <Footer />
-      </div>
-    );
-  }
+        <h1 className="page-title user-page__title">My list</h1>
 
-  return null;
+        <User />
+      </header>
+
+      <section className="catalog">
+        <h2 className="catalog__title visually-hidden">Catalog</h2>
+        {films.length > 0 ? <MovieCardList films={films} /> : <p>Your movie list is empty.</p>}
+      </section>
+      <Footer />
+    </div>
+  );
 };
 
 MyList.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmType)
-  ),
-  loading: PropTypes.bool,
-  isFilmsAvailable: PropTypes.bool
+  )
 };
 
 const mapStateToProps = (state) => ({
-  loading: state.loading,
-  isFilmsAvailable: state.films.length > 0,
   films: state.films.filter((film) => film.is_favorite)
 });
 
