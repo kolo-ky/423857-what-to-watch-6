@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {useHistory} from 'react-router-dom';
 
+// redux
+import {connect} from 'react-redux';
+
 // types
 import filmType from '../../types/film-type';
 
@@ -12,7 +15,7 @@ import User from "../app-header/user/user";
 // routes
 import {getRoute} from "../../routes/routes";
 
-const MovieCard = ({posterFilm}) => {
+const MovieCard = ({posterFilm, isAuth}) => {
   const history = useHistory();
 
   return (
@@ -39,21 +42,22 @@ const MovieCard = ({posterFilm}) => {
               <span className="movie-card__genre">{posterFilm.genre}</span>
               <span className="movie-card__year">{posterFilm.released}</span>
             </p>
-
-            <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button" onClick={() => history.push(getRoute(`player`, posterFilm.id))}>
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"/>
-                </svg>
-                <span>Play</span>
-              </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"/>
-                </svg>
-                <span>My list</span>
-              </button>
-            </div>
+            {isAuth && (
+              <div className="movie-card__buttons">
+                <button className="btn btn--play movie-card__button" type="button" onClick={() => history.push(getRoute(`player`, posterFilm.id))}>
+                  <svg viewBox="0 0 19 19" width="19" height="19">
+                    <use xlinkHref="#play-s"/>
+                  </svg>
+                  <span>Play</span>
+                </button>
+                <button className="btn btn--list movie-card__button" type="button">
+                  <svg viewBox="0 0 19 20" width="19" height="20">
+                    <use xlinkHref="#add"/>
+                  </svg>
+                  <span>My list</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -62,7 +66,12 @@ const MovieCard = ({posterFilm}) => {
 };
 
 MovieCard.propTypes = {
-  posterFilm: PropTypes.shape(filmType)
+  posterFilm: PropTypes.shape(filmType),
+  isAuth: PropTypes.bool
 };
 
-export default MovieCard;
+const mapStateToProps = (state) => ({
+  isAuth: state.authorizationStatus
+});
+
+export default connect(mapStateToProps)(MovieCard);

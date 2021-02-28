@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {Link, useHistory} from "react-router-dom";
 
@@ -40,26 +40,23 @@ const MovieCardFull = ({film, isAuth, comments}) => {
               <span className="movie-card__genre">{film.genre}</span>
               <span className="movie-card__year">{film.released}</span>
             </p>
-
-            <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button" onClick={() => history.push(`/player/${film.id}`)}>
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
-                <span>Play</span>
-              </button>
-              {isAuth && (
-                <Fragment>
-                  <button className="btn btn--list movie-card__button" type="button">
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"></use>
-                    </svg>
-                    <span>My list</span>
-                  </button>
-                  <Link to={getRoute(`addReview`, film.id)} className="btn movie-card__button">Add review</Link>
-                </Fragment>
-              )}
-            </div>
+            {isAuth && (
+              <div className="movie-card__buttons">
+                <button className="btn btn--play movie-card__button" type="button" onClick={() => history.push(`/player/${film.id}`)}>
+                  <svg viewBox="0 0 19 19" width="19" height="19">
+                    <use xlinkHref="#play-s"></use>
+                  </svg>
+                  <span>Play</span>
+                </button>
+                <button className="btn btn--list movie-card__button" type="button">
+                  <svg viewBox="0 0 19 20" width="19" height="20">
+                    <use xlinkHref="#add"></use>
+                  </svg>
+                  <span>My list</span>
+                </button>
+                <Link to={getRoute(`addReview`, film.id)} className="btn movie-card__button">Add review</Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
