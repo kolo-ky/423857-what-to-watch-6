@@ -1,0 +1,12 @@
+.user-auth-block {
+  display: flex;
+  align-items: center;
+}
+
+.user-auth-block__item {
+  margin-right: 15px;
+}
+
+.user-auth-block__item:last-child {
+  margin-right: 0;
+}

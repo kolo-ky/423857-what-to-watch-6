@@ -25,12 +25,12 @@ const User = ({isAuth, user, setLogout}) => {
 
   if (isAuth) {
     return (
-      <div className="user-block">
-        <div className="user-block__avatar">
+      <div className="user-block user-auth-block">
+        <div className="user-block__avatar user-auth-block__item">
           <img src={user ? user.avatar : DEFAULT_AVATAR} alt="User avatar" width="63" height="63"/>
         </div>
-
-        <a href="#" className="user-block__link" onClick={(event) => handleClick(event)}>Logout</a>
+        <Link to={getRoute(`mylist`)} className="user-block__link user-auth-block__item">My List</Link>
+        <a href="#" className="user-block__link user-auth-block__item" onClick={(event) => handleClick(event)}>Logout</a>
       </div>
     );
   }
