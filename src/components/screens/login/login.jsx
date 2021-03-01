@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import PropsTypes from 'prop-types';
 
 // redux
@@ -10,6 +10,7 @@ import {login} from "../../../store/enhancers";
 
 // components
 import Footer from '../../footer/footer';
+import AppHeader from "../../app-header/app-header";
 
 // routes
 import {getRoute} from "../../../routes/routes";
@@ -40,17 +41,7 @@ const Login = ({setLogin}) => {
 
   return (
     <div className="user-page">
-      <header className="page-header user-page__head">
-        <div className="logo">
-          <Link to={getRoute(`home`)} className="logo__link">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </Link>
-        </div>
-
-        <h1 className="page-title user-page__title">Sign in</h1>
-      </header>
+      <AppHeader />
 
       <div className="sign-in user-page__content">
         <form action="#" className="sign-in__form" onSubmit={handleSubmit}>

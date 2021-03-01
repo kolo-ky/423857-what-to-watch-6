@@ -6,7 +6,8 @@ import {requiredAuth} from "../store/action";
 
 const httpCode = {
   UNAUTHORIZED: 401,
-  BAD_REQUEST: 400
+  BAD_REQUEST: 400,
+  NOT_FOUND: 404
 };
 
 const createApi = (onAuthorized) => {

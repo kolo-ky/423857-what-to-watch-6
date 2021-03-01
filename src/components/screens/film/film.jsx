@@ -1,24 +1,54 @@
-import React, {Fragment} from 'react';
-import PropTypes from "prop-types";
-import {useParams} from 'react-router-dom';
+import React, {Fragment, useState, useEffect} from 'react';
+import PropsTypes from 'prop-types';
+import {useParams, Redirect} from 'react-router-dom';
 
-// types
-import filmType from "../../../types/film-type";
+// redux
+import {connect} from 'react-redux';
+
+// selector
+import {filmSelector} from "../../../selectors/movie-selector";
 
 // components
 import Footer from '../../footer/footer';
 import MovieCardListProxy from '../../movie-card-list/movie-card-list-proxy/movie-card-list-proxy';
 import MovieCardFull from "../../movie-card-full/movie-card-full";
+import Loading from "../../loading/loading";
 
-const Film = (props) => {
-  const {films} = props;
+// api
+import {getMovieCommentsApi} from "../../../api/comments";
+
+// routes
+import {getRoute} from "../../../routes/routes";
+
+const Film = ({getFilm}) => {
+  const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(true);
   const {id} = useParams();
+  const film = getFilm(id);
 
-  const film = films.find((item) => item.id === Number(id));
+  useEffect(() => {
+    getMovieCommentsApi(id).then((resp) => {
+      setComments((prevState) => ([
+        ...prevState,
+        ...resp.data
+      ]));
+      setLoading(false);
+    });
+  }, [id]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (!film) {
+    return (
+      <Redirect to={getRoute(`notFound`)}/>
+    );
+  }
 
   return (
     <Fragment>
-      <MovieCardFull film={film}/>
+      <MovieCardFull film={film} comments={comments}/>
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
@@ -31,9 +61,11 @@ const Film = (props) => {
 };
 
 Film.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape(filmType)
-  )
+  getFilm: PropsTypes.func
 };
 
-export default Film;
+const mapStateToProps = (state) => ({
+  getFilm: filmSelector(state)
+});
+
+export default connect(mapStateToProps)(Film);

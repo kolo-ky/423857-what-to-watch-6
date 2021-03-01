@@ -21,7 +21,7 @@ const PrivateRoute = ({component: Component, isAuth, ...rest}) => {
 
 PrivateRoute.propTypes = {
   isAuth: PropTypes.bool,
-  component: PropTypes.func
+  component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
 const mapStateToProps = (state) => ({

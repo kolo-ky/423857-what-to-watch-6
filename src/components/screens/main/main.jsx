@@ -8,17 +8,10 @@ import MovieCardListProxy from '../../movie-card-list/movie-card-list-proxy/movi
 import MovieCard from '../../movie-card/movie-card';
 import Footer from '../../footer/footer';
 import GenreList from '../../genre-list/genre-list';
-import Loading from '../../loading/loading';
 import filmType from "../../../types/film-type";
 
-const Main = ({loading, films}) => {
+const Main = ({films}) => {
   const posterFilm = useMemo(() => films && films[0], [films]);
-
-  if (loading) {
-    return (
-      <Loading/>
-    );
-  }
 
   return (
     <Fragment>
@@ -35,13 +28,10 @@ const Main = ({loading, films}) => {
 };
 
 const mapStateToProps = (state) => ({
-  loading: state.loading,
-  isFilmsAvailable: state.films.length > 0,
   films: state.films
 });
 
 Main.propTypes = {
-  loading: PropTypes.bool,
   films: PropTypes.arrayOf(
       PropTypes.shape(filmType)
   )

@@ -33,7 +33,7 @@ const Details = ({film}) => {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">{film.runTime} min</span>
+          <span className="movie-card__details-value">{film.run_time} min</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Genre</strong>
