@@ -27,8 +27,8 @@ const Main = ({films}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  films: state.films
+const mapStateToProps = ({MOVIES}) => ({
+  films: MOVIES.films
 });
 
 Main.propTypes = {

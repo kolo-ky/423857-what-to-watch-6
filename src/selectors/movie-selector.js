@@ -1,3 +1,3 @@
-export const filmSelector = (state) => (id) => {
-  return state.films.find((film) => film.id === Number(id));
+export const filmSelector = (MOVIES) => (id) => {
+  return MOVIES.films.find((film) => film.id === Number(id));
 };

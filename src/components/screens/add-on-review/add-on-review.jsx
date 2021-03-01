@@ -64,8 +64,8 @@ AddOnReview.propTypes = {
   getFilm: PropTypes.func
 };
 
-const mapStateToProps = (state) => ({
-  getFilm: filmSelector(state)
+const mapStateToProps = ({MOVIES}) => ({
+  getFilm: filmSelector(MOVIES)
 });
 
 const addOnReviewConnected = connect(mapStateToProps)(AddOnReview);

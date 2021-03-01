@@ -64,8 +64,8 @@ Film.propTypes = {
   getFilm: PropsTypes.func
 };
 
-const mapStateToProps = (state) => ({
-  getFilm: filmSelector(state)
+const mapStateToProps = ({MOVIES}) => ({
+  getFilm: filmSelector(MOVIES)
 });
 
 export default connect(mapStateToProps)(Film);

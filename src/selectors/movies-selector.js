@@ -1,15 +1,15 @@
-export const getFilteredFilms = (state) => (count) => {
-  if (state.genre) {
-    return state.films.filter((film) => film.genre === state.genre).slice(0, count);
+export const getFilteredFilms = ({MOVIES}) => (count) => {
+  if (MOVIES.genre) {
+    return MOVIES.films.filter((film) => film.genre === MOVIES.genre).slice(0, count);
   }
 
-  return state.films.slice(0, count);
+  return MOVIES.films.slice(0, count);
 };
 
-export const getFilmsCount = (state) => {
-  if (state.genre) {
-    return state.films.filter((film) => film.genre === state.genre).length;
+export const getFilmsCount = ({MOVIES}) => {
+  if (MOVIES.genre) {
+    return MOVIES.films.filter((film) => film.genre === MOVIES.genre).length;
   }
 
-  return state.films.length;
+  return MOVIES.films.length;
 };

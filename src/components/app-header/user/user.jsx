@@ -51,9 +51,9 @@ User.propTypes = {
   })
 };
 
-const mapStateToProps = (state) => ({
-  isAuth: state.authorizationStatus,
-  user: state.user
+const mapStateToProps = ({USER}) => ({
+  isAuth: USER.authorizationStatus,
+  user: USER.user
 });
 
 const mapDispatchToProps = (dispatch) => {

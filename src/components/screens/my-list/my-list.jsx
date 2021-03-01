@@ -48,8 +48,8 @@ MyList.propTypes = {
   )
 };
 
-const mapStateToProps = (state) => ({
-  films: state.films.filter((film) => film.is_favorite)
+const mapStateToProps = ({MOVIES}) => ({
+  films: MOVIES.films.filter((film) => film.is_favorite)
 });
 
 export default connect(mapStateToProps)(MyList);

@@ -66,8 +66,8 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const mapStateToProps = (state) => ({
-  loading: state.loading
+const mapStateToProps = ({MOVIES}) => ({
+  loading: MOVIES.loading
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -84,8 +84,8 @@ MovieCardFull.propTypes = {
   )
 };
 
-const mapStateToProps = (state) => ({
-  isAuth: state.authorizationStatus
+const mapStateToProps = ({USER}) => ({
+  isAuth: USER.authorizationStatus
 });
 
 export default connect(mapStateToProps)(MovieCardFull);

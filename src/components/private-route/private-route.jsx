@@ -24,8 +24,8 @@ PrivateRoute.propTypes = {
   component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
-const mapStateToProps = (state) => ({
-  isAuth: state.authorizationStatus
+const mapStateToProps = ({USER}) => ({
+  isAuth: USER.authorizationStatus
 });
 
 export default connect(mapStateToProps)(PrivateRoute);
