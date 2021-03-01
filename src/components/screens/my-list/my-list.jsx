@@ -10,6 +10,9 @@ import User from "../../app-header/user/user";
 // redux
 import {connect} from 'react-redux';
 
+// selectors
+import {getFavoriteFilms} from "../../../store/movies/selectors";
+
 // types
 import filmType from '../../../types/film-type';
 
@@ -48,8 +51,8 @@ MyList.propTypes = {
   )
 };
 
-const mapStateToProps = ({MOVIES}) => ({
-  films: MOVIES.films.filter((film) => film.is_favorite)
+const mapStateToProps = (state) => ({
+  films: getFavoriteFilms(state)
 });
 
 export default connect(mapStateToProps)(MyList);

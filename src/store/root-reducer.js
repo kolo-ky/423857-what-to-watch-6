@@ -5,7 +5,7 @@ import {combineReducers} from "redux";
 import {user} from "./user/user";
 import {movies} from "./movies/movies";
 
-const nameSpace = {
+export const nameSpace = {
   USER: `USER`,
   MOVIES: `MOVIES`
 };

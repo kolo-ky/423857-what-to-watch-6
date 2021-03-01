@@ -5,6 +5,9 @@ import {Link, useHistory} from "react-router-dom";
 // redux
 import {connect} from 'react-redux';
 
+// selectors
+import {getAuth} from "../../store/user/selectors";
+
 // types
 import filmType from '../../types/film-type';
 import reviewTypes from '../../types/review-types';
@@ -84,8 +87,8 @@ MovieCardFull.propTypes = {
   )
 };
 
-const mapStateToProps = ({USER}) => ({
-  isAuth: USER.authorizationStatus
+const mapStateToProps = (state) => ({
+  isAuth: getAuth(state)
 });
 
 export default connect(mapStateToProps)(MovieCardFull);

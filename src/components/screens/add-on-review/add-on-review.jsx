@@ -6,7 +6,7 @@ import {Link, Redirect, useParams} from "react-router-dom";
 import {connect} from "react-redux";
 
 // selector
-import {filmSelector} from "../../../selectors/movie-selector";
+import {filmSelector} from "../../../store/movies/selectors";
 
 // components
 import AddReviewForm from '../../forms/add-review-form/add-review-form';
@@ -64,8 +64,8 @@ AddOnReview.propTypes = {
   getFilm: PropTypes.func
 };
 
-const mapStateToProps = ({MOVIES}) => ({
-  getFilm: filmSelector(MOVIES)
+const mapStateToProps = (state) => ({
+  getFilm: filmSelector(state)
 });
 
 const addOnReviewConnected = connect(mapStateToProps)(AddOnReview);

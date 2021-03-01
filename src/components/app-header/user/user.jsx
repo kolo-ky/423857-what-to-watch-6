@@ -11,6 +11,9 @@ import {getRoute} from "../../../routes/routes";
 // enhancers
 import {logout} from '../../../store/enhancers';
 
+// selectors
+import {getAuth, getUser} from "../../../store/user/selectors";
+
 const DEFAULT_AVATAR = `img/avatar.jpg`;
 
 const User = ({isAuth, user, setLogout}) => {
@@ -51,9 +54,9 @@ User.propTypes = {
   })
 };
 
-const mapStateToProps = ({USER}) => ({
-  isAuth: USER.authorizationStatus,
-  user: USER.user
+const mapStateToProps = (state) => ({
+  isAuth: getAuth(state),
+  user: getUser(state)
 });
 
 const mapDispatchToProps = (dispatch) => {

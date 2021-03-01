@@ -25,6 +25,9 @@ import {getMovies, checkAuth} from "../../store/enhancers";
 // routes
 import {getRoute} from "../../routes/routes";
 
+// selectors
+import {isLoading} from "../../store/movies/selectors";
+
 const App = ({loadMovies, loading, getAuth}) => {
 
   useEffect(() => {
@@ -66,8 +69,8 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const mapStateToProps = ({MOVIES}) => ({
-  loading: MOVIES.loading
+const mapStateToProps = (state) => ({
+  loading: isLoading(state)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -10,6 +10,9 @@ import Footer from '../../footer/footer';
 import GenreList from '../../genre-list/genre-list';
 import filmType from "../../../types/film-type";
 
+// selectors
+import {getFilms} from "../../../store/movies/selectors";
+
 const Main = ({films}) => {
   const posterFilm = useMemo(() => films && films[0], [films]);
 
@@ -27,8 +30,8 @@ const Main = ({films}) => {
   );
 };
 
-const mapStateToProps = ({MOVIES}) => ({
-  films: MOVIES.films
+const mapStateToProps = (state) => ({
+  films: getFilms(state)
 });
 
 Main.propTypes = {

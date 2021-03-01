@@ -5,6 +5,9 @@ import {useHistory} from 'react-router-dom';
 // redux
 import {connect} from 'react-redux';
 
+// selectors
+import {getAuth} from "../../store/user/selectors";
+
 // types
 import filmType from '../../types/film-type';
 
@@ -70,8 +73,8 @@ MovieCard.propTypes = {
   isAuth: PropTypes.bool
 };
 
-const mapStateToProps = ({USER}) => ({
-  isAuth: USER.authorizationStatus
+const mapStateToProps = (state) => ({
+  isAuth: getAuth(state)
 });
 
 export default connect(mapStateToProps)(MovieCard);

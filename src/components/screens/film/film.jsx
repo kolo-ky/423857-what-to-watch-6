@@ -6,7 +6,7 @@ import {useParams, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 // selector
-import {filmSelector} from "../../../selectors/movie-selector";
+import {filmSelector} from "../../../store/movies/selectors";
 
 // components
 import Footer from '../../footer/footer';
@@ -24,6 +24,7 @@ const Film = ({getFilm}) => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const {id} = useParams();
+
   const film = getFilm(id);
 
   useEffect(() => {
@@ -64,8 +65,8 @@ Film.propTypes = {
   getFilm: PropsTypes.func
 };
 
-const mapStateToProps = ({MOVIES}) => ({
-  getFilm: filmSelector(MOVIES)
+const mapStateToProps = (state) => ({
+  getFilm: filmSelector(state)
 });
 
 export default connect(mapStateToProps)(Film);

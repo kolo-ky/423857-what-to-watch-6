@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 
 // store
 import {changeGenreAction} from "../../store/action";
+import {getGenre} from "../../store/movies/selectors";
 
 // genres
 import genres from "./genres";
@@ -45,7 +46,7 @@ GenreList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  genre: state.genre,
+  genre: getGenre(state),
 });
 
 const mapDispatchToProps = (dispatch) => {
