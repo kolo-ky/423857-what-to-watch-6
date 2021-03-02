@@ -23,9 +23,6 @@ const MovieCardListProxy = ({filmGenre}) => {
     if (filmGenre) {
       dispatch(changeGenre(filmGenre));
     }
-    return () => {
-      dispatch(changeGenre(null));
-    };
   }, [filmGenre]);
 
   const films = useSelector((state) => getFilteredFilms(state, count));
