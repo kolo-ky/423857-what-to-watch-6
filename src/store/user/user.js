@@ -1,5 +1,5 @@
 // actions
-import {REQUIRED_AUTH, SET_USER} from "../action";
+import {REQUIRED_AUTH, SET_USER} from "../actions";
 
 const initialState = {
   authorizationStatus: false,

@@ -4,7 +4,7 @@ import React, {Fragment} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 
 // store
-import {changeGenre} from "../../store/action";
+import {changeGenre} from "../../store/actions";
 import {getGenre} from "../../store/movies/selectors";
 
 // genres

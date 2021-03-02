@@ -1,5 +1,5 @@
 // actions
-import {CHANGE_GENRE, SET_MOVIES, TOGGLE_LOADING} from "../action";
+import {CHANGE_GENRE, SET_MOVIES, TOGGLE_LOADING} from "../actions";
 
 const initialState = {
   genre: null,

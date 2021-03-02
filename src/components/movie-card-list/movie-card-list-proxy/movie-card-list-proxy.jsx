@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 // redux
 import {useSelector, useDispatch} from 'react-redux';
-import {changeGenre} from "../../../store/action";
+import {changeGenre} from "../../../store/actions";
 
 // components
 import MovieCardList from "../movie-card-list";
