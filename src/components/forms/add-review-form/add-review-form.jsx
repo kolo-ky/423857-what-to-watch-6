@@ -5,6 +5,9 @@ import {useHistory} from 'react-router-dom';
 // api
 import {addMovieCommentsApi} from "../../../api/comments";
 
+// hooks
+import {useApi} from "../../../hooks/hooks";
+
 // routes
 import {getRoute} from "../../../routes/routes";
 
@@ -29,16 +32,13 @@ const AddReviewForm = ({id}) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     setDisableForm(true);
-    addMovieCommentsApi(id, reviewForm).then(() => {
+
+    useApi(addMovieCommentsApi, {id, reviewForm}).then(() => {
       history.push(getRoute(`film`, id));
     });
   };
 
   const handleChangeText = ({target}) => {
-    if (target.value.length > textSymbolCount.max) {
-      return;
-    }
-
     setReviewForm({
       ...reviewForm,
       comment: target.value
@@ -89,8 +89,16 @@ const AddReviewForm = ({id}) => {
         </div>
 
         <div className="add-review__text">
-          <textarea className="add-review__textarea" name="review-text" id="review-text"
-            placeholder="Review text" value={reviewForm.comment} onChange={handleChangeText} disabled={disableForm}/>
+          <textarea
+            className="add-review__textarea"
+            name="review-text"
+            id="review-text"
+            placeholder="Review text"
+            value={reviewForm.comment}
+            maxLength={textSymbolCount.max}
+            onChange={handleChangeText}
+            disabled={disableForm}
+          />
           <div className="add-review__submit">
             <button className="add-review__btn" type="submit" disabled={!isButtonActive || disableForm}>Post</button>
           </div>
@@ -105,8 +113,7 @@ const AddReviewForm = ({id}) => {
 };
 
 AddReviewForm.propTypes = {
-  id: PropTypes.number.isRequired,
-  submitForm: PropTypes.func
+  id: PropTypes.number.isRequired
 };
 
 export default AddReviewForm;
