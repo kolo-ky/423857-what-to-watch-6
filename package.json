@@ -33,6 +33,7 @@
     "redux": "4.0.5",
     "redux-thunk": "2.3",
     "axios": "0.21",
-    "reselect": "4"
+    "reselect": "4",
+    "redux-devtools-extension": "2.13"
   }
 }
