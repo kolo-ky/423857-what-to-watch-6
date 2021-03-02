@@ -1,20 +1,22 @@
 import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
 
 // redux
-import {connect} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
 // store
-import {changeGenreAction} from "../../store/action";
+import {changeGenre} from "../../store/action";
 import {getGenre} from "../../store/movies/selectors";
 
 // genres
 import genres from "./genres";
 
-const GenreList = ({genre, changeGenre}) => {
+const GenreList = () => {
+  const genre = useSelector((state) => getGenre(state));
+  const dispatch = useDispatch();
+
   const handleClick = (value, event) => {
     event.preventDefault();
-    changeGenre(value);
+    dispatch(changeGenre(value));
   };
 
   return (
@@ -40,19 +42,4 @@ const GenreList = ({genre, changeGenre}) => {
   );
 };
 
-GenreList.propTypes = {
-  genre: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null]).isRequired]),
-  changeGenre: PropTypes.func.isRequired
-};
-
-const mapStateToProps = (state) => ({
-  genre: getGenre(state),
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeGenre: (value) => dispatch(changeGenreAction(value)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(GenreList);
+export default GenreList;

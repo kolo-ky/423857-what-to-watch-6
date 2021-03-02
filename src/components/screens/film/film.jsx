@@ -1,9 +1,8 @@
 import React, {Fragment, useState, useEffect} from 'react';
-import PropsTypes from 'prop-types';
 import {useParams, Redirect} from 'react-router-dom';
 
 // redux
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 // selector
 import {filmSelector} from "../../../store/movies/selectors";
@@ -20,12 +19,12 @@ import {getMovieCommentsApi} from "../../../api/comments";
 // routes
 import {getRoute} from "../../../routes/routes";
 
-const Film = ({getFilm}) => {
+const Film = () => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const {id} = useParams();
 
-  const film = getFilm(id);
+  const film = useSelector((state) => filmSelector(state, id));
 
   useEffect(() => {
     getMovieCommentsApi(id).then((resp) => {
@@ -61,12 +60,4 @@ const Film = ({getFilm}) => {
   );
 };
 
-Film.propTypes = {
-  getFilm: PropsTypes.func
-};
-
-const mapStateToProps = (state) => ({
-  getFilm: filmSelector(state)
-});
-
-export default connect(mapStateToProps)(Film);
+export default Film;

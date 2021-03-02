@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {Link, useHistory} from "react-router-dom";
 
 // redux
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 // selectors
 import {getAuth} from "../../store/user/selectors";
@@ -20,8 +20,9 @@ import User from "../app-header/user/user";
 // routes
 import {getRoute} from "../../routes/routes";
 
-const MovieCardFull = ({film, isAuth, comments}) => {
+const MovieCardFull = ({film, comments}) => {
   const history = useHistory();
+  const isAuth = useSelector((state) => getAuth(state));
 
   return (
     <section className="movie-card movie-card--full" style={{background: film.background_color}}>
@@ -81,14 +82,9 @@ const MovieCardFull = ({film, isAuth, comments}) => {
 
 MovieCardFull.propTypes = {
   film: PropTypes.shape(filmType),
-  isAuth: PropTypes.bool.isRequired,
   comments: PropTypes.arrayOf(
       PropTypes.shape(reviewTypes)
   )
 };
 
-const mapStateToProps = (state) => ({
-  isAuth: getAuth(state)
-});
-
-export default connect(mapStateToProps)(MovieCardFull);
+export default MovieCardFull;

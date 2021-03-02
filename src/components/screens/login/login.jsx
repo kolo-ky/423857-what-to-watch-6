@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import PropsTypes from 'prop-types';
 
 // redux
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 // enhancers
 import {login} from "../../../store/enhancers";
@@ -15,8 +14,9 @@ import AppHeader from "../../app-header/app-header";
 // routes
 import {getRoute} from "../../../routes/routes";
 
-const Login = ({setLogin}) => {
+const Login = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [userInfo, setUserInfo] = useState({
     email: ``,
@@ -34,7 +34,7 @@ const Login = ({setLogin}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setLogin(userInfo).then(() => {
+    dispatch(login(userInfo)).then(() => {
       history.push(getRoute(`home`));
     });
   };
@@ -82,14 +82,4 @@ const Login = ({setLogin}) => {
   );
 };
 
-Login.propTypes = {
-  setLogin: PropsTypes.func
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setLogin: (user) => dispatch(login(user))
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Login);
+export default Login;

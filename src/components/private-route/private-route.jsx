@@ -6,12 +6,14 @@ import PropTypes from 'prop-types';
 import {getRoute} from "../../routes/routes";
 
 // redux
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 // selectors
 import {getAuth} from "../../store/user/selectors";
 
-const PrivateRoute = ({component: Component, isAuth, ...rest}) => {
+const PrivateRoute = ({component: Component, ...rest}) => {
+  const isAuth = useSelector((state) => getAuth(state));
+
   return (
     <Route
       {...rest}
@@ -23,12 +25,7 @@ const PrivateRoute = ({component: Component, isAuth, ...rest}) => {
 };
 
 PrivateRoute.propTypes = {
-  isAuth: PropTypes.bool,
   component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
-const mapStateToProps = (state) => ({
-  isAuth: getAuth(state)
-});
-
-export default connect(mapStateToProps)(PrivateRoute);
+export default PrivateRoute;
