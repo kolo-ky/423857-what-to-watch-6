@@ -1,5 +1,5 @@
 // actions
-import {CHANGE_GENRE, SET_MOVIES, SET_FAVORITE_MOVIE, TOGGLE_LOADING} from "../actions";
+import {CHANGE_GENRE, SET_MOVIES, SET_PROMO, SET_FAVORITE_MOVIE, TOGGLE_LOADING} from "../actions";
 
 const initialState = {
   genre: null,
@@ -16,6 +16,8 @@ const movies = (state = initialState, action) => {
       return {...state, loading: !state.loading};
     case SET_MOVIES:
       return {...state, films: [...state.films, ...action.payload]};
+    case SET_PROMO:
+      return {...state, promo: {...action.payload}};
     case SET_FAVORITE_MOVIE:
       const updatedFilmList = state.films.map((item) => {
         if (item.id === action.payload.id) {

@@ -1,6 +1,7 @@
 export const CHANGE_GENRE = `CHANGE_GENRE`;
 export const TOGGLE_LOADING = `TOGGLE_LOADING`;
 export const SET_MOVIES = `SET_MOVIES`;
+export const SET_PROMO = `SET_PROMO`;
 export const SET_FAVORITE_MOVIE = `SET_FAVORITE_MOVIE`;
 export const REQUIRED_AUTH = `REQUIRED_AUTH`;
 export const SET_USER = `SET_USER`;
@@ -21,6 +22,13 @@ export const toggleLoading = () => {
 export const setMovies = (payload) => {
   return {
     type: SET_MOVIES,
+    payload
+  };
+};
+
+export const setPromo = (payload) => {
+  return {
+    type: SET_PROMO,
     payload
   };
 };
