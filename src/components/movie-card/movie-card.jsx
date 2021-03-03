@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import {useHistory} from 'react-router-dom';
 
 // redux
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {sendMovieToFavorite} from "../../store/enhancers";
 
 // selectors
 import {getAuth} from "../../store/user/selectors";
@@ -20,7 +21,12 @@ import {getRoute} from "../../routes/routes";
 
 const MovieCard = ({posterFilm}) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const isAuth = useSelector((state) => getAuth(state));
+
+  const handleClick = () => {
+    dispatch(sendMovieToFavorite({"film_id": posterFilm.id, "status": posterFilm.is_favorite ? 0 : 1}));
+  };
 
   return (
     <section className="movie-card">
@@ -54,7 +60,11 @@ const MovieCard = ({posterFilm}) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
+                <button
+                  className="btn btn--list movie-card__button"
+                  type="button"
+                  onClick={handleClick}
+                >
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"/>
                   </svg>
