@@ -10,7 +10,7 @@ import Login from '../screens/login/login';
 import Film from '../screens/film/film';
 import AddOnReview from '../screens/add-on-review/add-on-review';
 import MyList from '../screens/my-list/my-list';
-import Player from '../screens/player/Player';
+import Player from '../screens/player/player';
 import NotFound from '../screens/not-found/not-found';
 import ScrollToTop from "../scroll-to-top/scroll-to-top";
 import Loading from "../loading/loading";
