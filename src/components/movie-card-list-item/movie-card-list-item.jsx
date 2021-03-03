@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
@@ -26,4 +26,4 @@ MovieCardListItem.propTypes = {
   film: PropTypes.shape(filmType)
 };
 
-export default MovieCardListItem;
+export default memo(MovieCardListItem);
