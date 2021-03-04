@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import {Link, Redirect, useParams} from "react-router-dom";
 
 // redux
-import {connect} from "react-redux";
+import {useSelector} from "react-redux";
 
 // selector
 import {filmSelector} from "../../../store/movies/selectors";
@@ -16,9 +15,9 @@ import User from "../../app-header/user/user";
 // routes
 import {getRoute} from "../../../routes/routes";
 
-const AddOnReview = ({getFilm}) => {
+const AddOnReview = () => {
   const {id} = useParams();
-  const film = getFilm(id);
+  const film = useSelector((state) => filmSelector(state, id));
 
   if (!film) {
     return (
@@ -60,14 +59,4 @@ const AddOnReview = ({getFilm}) => {
   );
 };
 
-AddOnReview.propTypes = {
-  getFilm: PropTypes.func
-};
-
-const mapStateToProps = (state) => ({
-  getFilm: filmSelector(state)
-});
-
-const addOnReviewConnected = connect(mapStateToProps)(AddOnReview);
-
-export default addOnReviewConnected;
+export default AddOnReview;
