@@ -8,8 +8,20 @@ import {filmSelector} from "../../../store/movies/selectors";
 // routes
 import {getRoute} from "../../../routes/routes";
 
+// buttons
+import Play from "./buttoms/play";
+import FullScreen from "./buttoms/full-screen";
+import Exit from "./buttoms/exit";
+
 // utils
-import {formatPlayerTime} from "../../../helpers/video-player-utils";
+import {
+  formatPlayerTime,
+  onPlayerFullScreen,
+  onPlayerPlayPause,
+  onPlayerStop,
+  getPlayerProgress,
+  getPlayerRestTime
+} from "../../../helpers/video-player-utils";
 
 const Player = () => {
   const videoRef = useRef();
@@ -19,49 +31,29 @@ const Player = () => {
   const [isPlaying, setPlay] = useState(false);
   const [progress, setProgress] = useState(`0`);
   const [elapsedTime, setElapsedTime] = useState(`0`);
-  const button = {play: `#play-s`, pause: `#pause`};
 
   const handleTimeUpdate = () => {
-    let progressTime = (videoRef.current.currentTime / videoRef.current.duration) * 100;
-    setProgress(progressTime.toFixed(2));
+    setProgress(getPlayerProgress(videoRef.current));
   };
 
   const handleOnPlaying = () => {
     setElapsedTime(formatPlayerTime(
-        videoRef.current.duration - videoRef.current.currentTime, videoRef.current.duration
+        getPlayerRestTime(videoRef.current), videoRef.current.duration
     ));
   };
 
-  const onPlayerFullScreen = () => {
-    if (videoRef.current && !document.fullscreenElement) {
-      if (videoRef.current.requestFullscreen) {
-        videoRef.current.requestFullscreen();
-      } else if (videoRef.current.mozRequestFullScreen) {
-        videoRef.current.mozRequestFullScreen();
-      } else if (videoRef.current.webkitRequestFullscreen) {
-        videoRef.current.webkitRequestFullscreen();
-      } else if (videoRef.current.msRequestFullscreen) {
-        videoRef.current.msRequestFullscreen();
-      }
-    }
+  const onFullScreen = () => {
+    onPlayerFullScreen(videoRef.current);
   };
 
   const handleExit = () => {
-    videoRef.current.pause();
-    videoRef.current.currentTime = 0;
-    videoRef.current.src = film.video_link;
-
+    onPlayerStop(videoRef.current, film.video_link);
     history.push(getRoute(`film`, film.id));
   };
 
   const handleClick = () => {
-    setPlay((prevState)=> !prevState);
-
-    if (isPlaying) {
-      videoRef.current.pause();
-    } else {
-      videoRef.current.play();
-    }
+    setPlay((prevState) => !prevState);
+    onPlayerPlayPause(videoRef.current, isPlaying);
   };
 
   if (!film) {
@@ -80,7 +72,7 @@ const Player = () => {
         onCanPlay={handleOnPlaying}
       />
 
-      <button type="button" className="player__exit" onClick={handleExit}>Exit</button>
+      <Exit clickToExit={handleExit}/>
 
       <div className="player__controls">
         <div className="player__controls-row">
@@ -92,20 +84,12 @@ const Player = () => {
         </div>
 
         <div className="player__controls-row">
-          <button type="button" className="player__play" onClick={handleClick}>
-            <svg viewBox="0 0 19 19" width="19" height="19">
-              <use xlinkHref={isPlaying ? button.pause : button.play} />
-            </svg>
-            <span>Play</span>
-          </button>
+
+          <Play clickToPlay={handleClick} isPlaying={isPlaying}/>
+
           <div className="player__name">{film.title}</div>
 
-          <button type="button" className="player__full-screen" onClick={onPlayerFullScreen}>
-            <svg viewBox="0 0 27 27" width="27" height="27">
-              <use xlinkHref="#full-screen" />
-            </svg>
-            <span>Full screen</span>
-          </button>
+          <FullScreen clickToFullScreen={onFullScreen}/>
         </div>
       </div>
     </div>

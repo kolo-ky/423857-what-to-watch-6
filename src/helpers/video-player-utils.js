@@ -27,3 +27,40 @@ export function formatPlayerTime(time = 0, totalTime = 0) {
 
   return outputParts.join(`:`);
 }
+
+export const onPlayerFullScreen = (video) => {
+  if (video && !document.fullscreenElement) {
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.mozRequestFullScreen) {
+      video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) {
+      video.msRequestFullscreen();
+    }
+  }
+};
+
+export const onPlayerStop = (video, link) => {
+  video.pause();
+  video.currentTime = 0;
+  video.src = link;
+};
+
+export const onPlayerPlayPause = (video, isPlaying) => {
+  if (isPlaying) {
+    video.pause();
+  } else {
+    video.play();
+  }
+};
+
+export const getPlayerProgress = (video) => {
+  let progressTime = (video.currentTime / video.duration) * 100;
+  return progressTime.toFixed(2);
+};
+
+export const getPlayerRestTime = (video) => {
+  return video.duration - video.currentTime;
+};
