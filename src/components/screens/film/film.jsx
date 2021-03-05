@@ -19,6 +19,9 @@ import {getMovieCommentsApi} from "../../../api/comments";
 // routes
 import {getRoute} from "../../../routes/routes";
 
+// hooks
+import {useApi} from "../../../hooks/hooks";
+
 const Film = () => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,10 +30,10 @@ const Film = () => {
   const film = useSelector((state) => filmSelector(state, id));
 
   useEffect(() => {
-    getMovieCommentsApi(id).then((resp) => {
+    useApi(getMovieCommentsApi, id).then((data) => {
       setComments((prevState) => ([
         ...prevState,
-        ...resp.data
+        ...data
       ]));
       setLoading(false);
     });
