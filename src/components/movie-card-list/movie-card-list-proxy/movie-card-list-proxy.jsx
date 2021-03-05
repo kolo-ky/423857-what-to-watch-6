@@ -2,31 +2,30 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 
 // redux
-import {connect} from 'react-redux';
-import {changeGenreAction} from "../../../store/action";
+import {useSelector, useDispatch} from 'react-redux';
+import {changeGenre} from "../../../store/actions";
 
 // components
 import MovieCardList from "../movie-card-list";
 import ShowMore from "../../show-more/show-more";
 
 // selector
-import {getFilteredFilms, getFilmsCount} from '../../../selectors/movies-selector';
+import {getFilteredFilms, getFilmsCount} from '../../../store/movies/selectors';
 
 const NUMBER_OF_FILMS = 8;
 
-const MovieCardListProxy = ({filmGenre, filmsCount, changeGenre, getFilms}) => {
+const MovieCardListProxy = ({filmGenre}) => {
   const [count, setCount] = useState(NUMBER_OF_FILMS);
+  const filmsCount = useSelector((state) => getFilmsCount(state));
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (filmGenre) {
-      changeGenre(filmGenre);
+      dispatch(changeGenre(filmGenre));
     }
-    return () => {
-      changeGenre(null);
-    };
   }, [filmGenre]);
 
-  const films = getFilms(count);
+  const films = useSelector((state) => getFilteredFilms(state, count));
 
   const handleClick = () => {
     setCount((prevState) => prevState + NUMBER_OF_FILMS);
@@ -41,22 +40,8 @@ const MovieCardListProxy = ({filmGenre, filmsCount, changeGenre, getFilms}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  getFilms: getFilteredFilms(state),
-  filmsCount: getFilmsCount(state)
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeGenre: (genre) => dispatch(changeGenreAction(genre)),
-  };
-};
-
 MovieCardListProxy.propTypes = {
-  filmGenre: PropTypes.string,
-  filmsCount: PropTypes.number,
-  changeGenre: PropTypes.func,
-  getFilms: PropTypes.func.isRequired
+  filmGenre: PropTypes.string
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieCardListProxy);
+export default MovieCardListProxy;

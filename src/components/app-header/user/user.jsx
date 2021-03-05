@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Link, useHistory} from "react-router-dom";
 
 // redux
-import {connect} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 // routes
 import {getRoute} from "../../../routes/routes";
@@ -11,14 +10,21 @@ import {getRoute} from "../../../routes/routes";
 // enhancers
 import {logout} from '../../../store/enhancers';
 
+// selectors
+import {getAuth, getUser} from "../../../store/user/selectors";
+
 const DEFAULT_AVATAR = `img/avatar.jpg`;
 
-const User = ({isAuth, user, setLogout}) => {
+const User = () => {
+  const isAuth = useSelector((state) => getAuth(state));
+  const user = useSelector((state) => getUser(state));
+  const dispatch = useDispatch();
   const history = useHistory();
+
   const handleClick = (event) => {
     event.preventDefault();
 
-    setLogout().then(() => {
+    dispatch(logout()).then(() => {
       history.push(getRoute(`home`));
     });
   };
@@ -42,24 +48,4 @@ const User = ({isAuth, user, setLogout}) => {
   );
 };
 
-User.propTypes = {
-  isAuth: PropTypes.bool.isRequired,
-  setLogout: PropTypes.func,
-  user: PropTypes.shape({
-    name: PropTypes.string,
-    avatar: PropTypes.string
-  })
-};
-
-const mapStateToProps = (state) => ({
-  isAuth: state.authorizationStatus,
-  user: state.user
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setLogout: () => dispatch(logout({email: null, avatar: null}))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default User;

@@ -3,9 +3,8 @@ export const TOGGLE_LOADING = `TOGGLE_LOADING`;
 export const SET_MOVIES = `SET_MOVIES`;
 export const REQUIRED_AUTH = `REQUIRED_AUTH`;
 export const SET_USER = `SET_USER`;
-export const LOGOUT = `LOGOUT`;
 
-export const changeGenreAction = (payload) => {
+export const changeGenre = (payload) => {
   return {
     type: CHANGE_GENRE,
     payload
@@ -28,13 +27,6 @@ export const setMovies = (payload) => {
 export const requiredAuth = (payload) => {
   return {
     type: REQUIRED_AUTH,
-    payload
-  };
-};
-
-export const logout = (payload) => {
-  return {
-    type: LOGOUT,
     payload
   };
 };

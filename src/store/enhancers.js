@@ -1,5 +1,5 @@
 // actions
-import {toggleLoading, setMovies, requiredAuth, setUser} from "./action";
+import {toggleLoading, setMovies, requiredAuth, setUser} from "./actions";
 
 // api
 import {getMoviesApi} from "../api/movies";

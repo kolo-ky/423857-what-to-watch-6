@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 // components
@@ -8,15 +7,17 @@ import Footer from '../../footer/footer';
 import User from "../../app-header/user/user";
 
 // redux
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 
-// types
-import filmType from '../../../types/film-type';
+// selectors
+import {getFavoriteFilms} from "../../../store/movies/selectors";
 
 // routes
 import {getRoute} from "../../../routes/routes";
 
-const MyList = ({films}) => {
+const MyList = () => {
+  const films = useSelector((state) => getFavoriteFilms(state));
+
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -42,14 +43,4 @@ const MyList = ({films}) => {
   );
 };
 
-MyList.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape(filmType)
-  )
-};
-
-const mapStateToProps = (state) => ({
-  films: state.films.filter((film) => film.is_favorite)
-});
-
-export default connect(mapStateToProps)(MyList);
+export default MyList;

@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // store
-import {requiredAuth} from "../store/action";
+import {requiredAuth} from "../store/actions";
 
 const httpCode = {
   UNAUTHORIZED: 401,

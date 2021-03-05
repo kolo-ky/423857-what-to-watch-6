@@ -1,13 +1,18 @@
-import React, {Fragment, useState, useEffect} from "react";
+import React, {Fragment, useState} from "react";
 import PropTypes from "prop-types";
 import {useHistory} from 'react-router-dom';
 
-// const
-const STARS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
 // api
 import {addMovieCommentsApi} from "../../../api/comments";
+
+// hooks
+import {useApi} from "../../../hooks/hooks";
+
+// routes
 import {getRoute} from "../../../routes/routes";
+
+// const
+const STARS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const AddReviewForm = ({id}) => {
   const history = useHistory();
@@ -15,8 +20,6 @@ const AddReviewForm = ({id}) => {
     rating: 0,
     comment: ``,
   });
-
-  const [isFormSubmit, setSubmit] = useState(false);
 
   const textSymbolCount = {
     min: 50,
@@ -26,25 +29,16 @@ const AddReviewForm = ({id}) => {
   const [isButtonActive, setButtonActive] = useState(false);
   const [disableForm, setDisableForm] = useState(false);
 
-  useEffect(() => {
-    if (isFormSubmit) {
-      setDisableForm(true);
-      addMovieCommentsApi(id, reviewForm).then(() => {
-        history.push(getRoute(`film`, id));
-      });
-    }
-  }, [isFormSubmit]);
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setSubmit(true);
+    setDisableForm(true);
+
+    useApi(addMovieCommentsApi, {id, reviewForm}).then(() => {
+      history.push(getRoute(`film`, id));
+    });
   };
 
   const handleChangeText = ({target}) => {
-    if (target.value.length > textSymbolCount.max) {
-      return;
-    }
-
     setReviewForm({
       ...reviewForm,
       comment: target.value
@@ -95,8 +89,16 @@ const AddReviewForm = ({id}) => {
         </div>
 
         <div className="add-review__text">
-          <textarea className="add-review__textarea" name="review-text" id="review-text"
-            placeholder="Review text" value={reviewForm.comment} onChange={handleChangeText} disabled={disableForm}/>
+          <textarea
+            className="add-review__textarea"
+            name="review-text"
+            id="review-text"
+            placeholder="Review text"
+            value={reviewForm.comment}
+            maxLength={textSymbolCount.max}
+            onChange={handleChangeText}
+            disabled={disableForm}
+          />
           <div className="add-review__submit">
             <button className="add-review__btn" type="submit" disabled={!isButtonActive || disableForm}>Post</button>
           </div>
@@ -111,8 +113,7 @@ const AddReviewForm = ({id}) => {
 };
 
 AddReviewForm.propTypes = {
-  id: PropTypes.number.isRequired,
-  submitForm: PropTypes.func
+  id: PropTypes.number.isRequired
 };
 
 export default AddReviewForm;

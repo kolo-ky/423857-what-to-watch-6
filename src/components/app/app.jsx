@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 // redux
-import {connect} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 // components
 import Main from '../screens/main/main';
@@ -25,13 +24,18 @@ import {getMovies, checkAuth} from "../../store/enhancers";
 // routes
 import {getRoute} from "../../routes/routes";
 
-const App = ({loadMovies, loading, getAuth}) => {
+// selectors
+import {isLoading} from "../../store/movies/selectors";
+
+const App = () => {
+  const loading = useSelector((state) => isLoading(state));
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getAuth().then(() => {
-      loadMovies();
+    dispatch(checkAuth()).then(() => {
+      dispatch(getMovies());
     });
-  }, [getAuth]);
+  }, [checkAuth]);
 
   if (loading) {
     return <Loading />;
@@ -53,21 +57,4 @@ const App = ({loadMovies, loading, getAuth}) => {
   );
 };
 
-App.propTypes = {
-  loadMovies: PropTypes.func.isRequired,
-  getAuth: PropTypes.func.isRequired,
-  loading: PropTypes.bool
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadMovies: () => dispatch(getMovies()),
-    getAuth: () => dispatch(checkAuth()),
-  };
-};
-
-const mapStateToProps = (state) => ({
-  loading: state.loading
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

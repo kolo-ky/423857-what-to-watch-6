@@ -5,6 +5,6 @@ export const getMovieCommentsApi = (id) => {
   return api.get(`/comments/${id}`);
 };
 
-export const addMovieCommentsApi = (id, params) => {
-  return api.post(`/comments/${id}`, params);
+export const addMovieCommentsApi = ({id, reviewForm}) => {
+  return api.post(`/comments/${id}`, reviewForm);
 };
