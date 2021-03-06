@@ -2,6 +2,7 @@ import {createSelector} from "reselect";
 import {nameSpace} from '../root-reducer';
 
 export const getFilms = (state) => state[nameSpace.MOVIES].films;
+export const promo = (state) => state[nameSpace.MOVIES].promo;
 export const isLoading = (state) => state[nameSpace.MOVIES].loading;
 export const getGenre = (state) => state[nameSpace.MOVIES].genre;
 

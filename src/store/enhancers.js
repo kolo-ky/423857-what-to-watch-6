@@ -1,13 +1,29 @@
 // actions
-import {toggleLoading, setMovies, requiredAuth, setUser} from "./actions";
+import {toggleLoading, setMovies, setPromo, setFavoriteMovie, requiredAuth, setUser} from "./actions";
 
 // api
-import {getMoviesApi} from "../api/movies";
+import {getMoviesApi, getPromoMovieApi, setFavoriteMovieApi} from "../api/movies";
 import {checkAuthApi, loginApi, logoutApi} from "../api/user";
 
 export const getMovies = () => (dispatch, _getState) => {
   getMoviesApi().then((resp) => {
     dispatch(setMovies(resp.data));
+    dispatch(toggleLoading());
+  }).catch(() => {});
+};
+
+export const getPromo = () => (dispatch, _getState) => {
+  getPromoMovieApi().then((resp) => {
+    dispatch(toggleLoading());
+    dispatch(setPromo(resp.data));
+    dispatch(toggleLoading());
+  }).catch(() => {});
+};
+
+export const sendMovieToFavorite = (params) => (dispatch, _getState) => {
+  setFavoriteMovieApi(params).then((resp) => {
+    dispatch(toggleLoading());
+    dispatch(setFavoriteMovie(resp.data));
     dispatch(toggleLoading());
   }).catch(() => {});
 };

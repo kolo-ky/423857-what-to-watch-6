@@ -6,6 +6,29 @@ import filmType from "../../../../types/film-type";
 
 const MAX_STARRING = 4;
 
+const movieLevels = [
+  {
+    name: `Bad`,
+    rating: [0, 3]
+  },
+  {
+    name: `Normal`,
+    rating: [3, 5]
+  },
+  {
+    name: `Good`,
+    rating: [5, 8]
+  },
+  {
+    name: `Very good`,
+    rating: [8, 10]
+  },
+  {
+    name: `Awesome`,
+    rating: [10]
+  }
+];
+
 const OverView = ({film}) => {
   const getStarring = () => {
     if (film.starring.length > MAX_STARRING) {
@@ -25,35 +48,15 @@ const OverView = ({film}) => {
     });
   };
 
-  const movieLevels = [
-    {
-      name: `Very bad...`,
-      rating: 1
-    },
-    {
-      name: `Bad`,
-      rating: 3
-    },
-    {
-      name: `Not bad`,
-      rating: 5
-    },
-    {
-      name: `Good`,
-      rating: 6
-    },
-    {
-      name: `Very good`,
-      rating: 8
-    },
-    {
-      name: `Awesome!`,
-      rating: 10
-    }
-  ];
-
   const getMovieLevel = (rating) => {
-    return movieLevels.find((level) => level.rating >= rating).name;
+    return movieLevels.reverse().find(
+        (level) => {
+          if (level.rating.length === 1) {
+            return rating >= level.rating[level.rating.length - 1];
+          }
+
+          return rating > level.rating[0] && rating <= level.rating[level.rating.length - 1];
+        }).name;
   };
 
   return (
@@ -62,7 +65,7 @@ const OverView = ({film}) => {
         <div className="movie-rating__score">{film.rating}</div>
         <p className="movie-rating__meta">
           <span className="movie-rating__level">{getMovieLevel(film.rating)}</span>
-          <span className="movie-rating__count">{film.ratingCount}</span>
+          <span className="movie-rating__count">{film.scores_count}</span>
         </p>
       </div>
 
