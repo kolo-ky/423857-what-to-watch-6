@@ -13,14 +13,12 @@ import MovieCardListProxy from '../../movie-card-list/movie-card-list-proxy/movi
 import MovieCardFull from "../../movie-card-full/movie-card-full";
 import Loading from "../../loading/loading";
 
-// api
-import {getMovieCommentsApi} from "../../../api/comments";
-
 // routes
 import {getRoute} from "../../../routes/routes";
 
 // hooks
 import {useApi} from "../../../hooks/hooks";
+import {apiFunc} from "../../../hooks/api-creator";
 
 const Film = () => {
   const [comments, setComments] = useState([]);
@@ -30,7 +28,7 @@ const Film = () => {
   const film = useSelector((state) => filmSelector(state, id));
 
   useEffect(() => {
-    useApi(getMovieCommentsApi, id).then((data) => {
+    useApi(apiFunc.getComments, id).then((data) => {
       setComments((prevState) => ([
         ...prevState,
         ...data

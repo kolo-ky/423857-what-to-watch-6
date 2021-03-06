@@ -2,11 +2,9 @@ import React, {Fragment, useState} from "react";
 import PropTypes from "prop-types";
 import {useHistory} from 'react-router-dom';
 
-// api
-import {addMovieCommentsApi} from "../../../api/comments";
-
 // hooks
 import {useApi} from "../../../hooks/hooks";
+import {apiFunc} from '../../../hooks/api-creator';
 
 // routes
 import {getRoute} from "../../../routes/routes";
@@ -33,7 +31,7 @@ const AddReviewForm = ({id}) => {
     evt.preventDefault();
     setDisableForm(true);
 
-    useApi(addMovieCommentsApi, {id, reviewForm}).then(() => {
+    useApi(apiFunc.addComment, {id, reviewForm}).then(() => {
       history.push(getRoute(`film`, id));
     });
   };
