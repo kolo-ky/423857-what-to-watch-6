@@ -4,7 +4,7 @@ import {REQUIRED_AUTH, SET_USER} from "../actions";
 const initialState = {
   authorizationStatus: false,
   user: {
-    email: null,
+    name: null,
     avatar: null
   }
 };
