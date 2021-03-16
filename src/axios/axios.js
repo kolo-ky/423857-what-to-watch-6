@@ -10,7 +10,7 @@ const httpCode = {
   NOT_FOUND: 404
 };
 
-const createApi = (onAuthorized) => {
+export const createApi = (onAuthorized) => {
   const api = axios.create({
     baseURL: `https://6.react.pages.academy/wtw`,
     timeout: 5000,

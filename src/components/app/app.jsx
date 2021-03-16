@@ -32,10 +32,9 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(checkAuth()).then(() => {
-      dispatch(getMovies());
-    });
-  }, [checkAuth]);
+    dispatch(checkAuth());
+    dispatch(getMovies());
+  }, []);
 
   if (loading) {
     return <Loading />;
